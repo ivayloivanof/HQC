@@ -4,11 +4,11 @@ namespace ConsoleApplication1
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var m = new double[,] { { 1, 3 }, { 5, 7 } };
-            var _mm = new double[,] { { 4, 2 }, { 1, 5 } };
-            var r = mm(m, _mm);
+            double[,] matrixOne = new double[,] { { 1, 3 }, { 5, 7 } };
+            double[,] matrixTwo = new double[,] { { 4, 2 }, { 1, 5 } };
+            var r = MultiplyMatrix(matrixOne, matrixTwo);
 
             for (int ii = 0; ii < r.GetLength(0); ii++)
             {
@@ -21,20 +21,28 @@ namespace ConsoleApplication1
 
         }
 
-        static double[,] mm(double[,] _, double[,] __)
+        static double[,] MultiplyMatrix(double[,] matrixOne, double[,] matrixTwo)
         {
-            if (_.GetLength(1) != __.GetLength(0))
+            if (matrixOne.GetLength(1) != matrixTwo.GetLength(0))
             {
                 throw new Exception("Error!");
             }
 
-            var _______ = _.GetLength(1);
-            var ___ = new double[_.GetLength(0), __.GetLength(1)];
-            for (int ____ = 0; ____ < ___.GetLength(0); ____++)
-                for (int _____ = 0; _____ < ___.GetLength(1); _____++)
-                    for (int ______ = 0; ______ < _______; ______++)
-                        ___[____, _____] += _[____, ______] * __[______, _____];
-            return ___;
+            var matrixOneRowCount = matrixOne.GetLength(1);
+            var newMatrix = new double[matrixOne.GetLength(0), matrixTwo.GetLength(1)];
+
+            for (int row = 0; row < newMatrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < newMatrix.GetLength(1); col++)
+                {
+                    for (int i = 0; i < matrixOneRowCount; i++)
+                    {
+                        newMatrix[row, col] += matrixOne[row, i] * matrixTwo[i, col];   
+                    }
+                }
+            }
+                
+            return newMatrix;
         }
     }
 }
