@@ -1,41 +1,54 @@
-﻿using System;
-
-namespace ConsoleApplication1
+﻿namespace ConsoleApplication1
 {
-    class Program
+    using System;
+
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
-            double[,] matrixOne = new double[,] { { 1, 3 }, { 5, 7 } };
-            double[,] matrixTwo = new double[,] { { 4, 2 }, { 1, 5 } };
-            var r = MultiplyMatrix(matrixOne, matrixTwo);
-
-            for (int ii = 0; ii < r.GetLength(0); ii++)
+            double[,] matrixOne = { { 1, 3 }, { 5, 7 } };
+            double[,] matrixTwo = { { 4, 2 }, { 1, 5 } };
+            try
             {
-                for (int jj = 0; jj < r.GetLength(1); jj++)
-                {
-                    Console.Write(r[ii, jj] + " ");
-                }
-                Console.WriteLine();
-            }
+                var multipliedMatrix = MultiplyingMatrix(matrixOne, matrixTwo);
 
+                PrintMatrix(multipliedMatrix);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
 
-        static double[,] MultiplyMatrix(double[,] matrixOne, double[,] matrixTwo)
+        private static void PrintMatrix(double[,] matrix)
+        {
+            for (int row = 0; row < matrix.GetLength(0); row++)
+            {
+                for (int col = 0; col < matrix.GetLength(1); col++)
+                {
+                    Console.Write(matrix[row, col] + " ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        private static double[,] MultiplyingMatrix(double[,] matrixOne, double[,] matrixTwo)
         {
             if (matrixOne.GetLength(1) != matrixTwo.GetLength(0))
             {
                 throw new Exception("Error!");
             }
 
-            var matrixOneRowCount = matrixOne.GetLength(1);
+            var matrixOneColLength = matrixOne.GetLength(1);
             var newMatrix = new double[matrixOne.GetLength(0), matrixTwo.GetLength(1)];
 
             for (int row = 0; row < newMatrix.GetLength(0); row++)
             {
                 for (int col = 0; col < newMatrix.GetLength(1); col++)
                 {
-                    for (int i = 0; i < matrixOneRowCount; i++)
+                    for (int i = 0; i < matrixOneColLength; i++)
                     {
                         newMatrix[row, col] += matrixOne[row, i] * matrixTwo[i, col];   
                     }
