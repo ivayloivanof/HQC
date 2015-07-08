@@ -1,0 +1,5 @@
+C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

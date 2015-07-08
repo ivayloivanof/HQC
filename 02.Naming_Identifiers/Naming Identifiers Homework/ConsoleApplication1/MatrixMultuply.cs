@@ -1,8 +1,8 @@
-﻿namespace ConsoleApplication1
+﻿namespace Matrix
 {
     using System;
 
-    public class Program
+    public class MatrixMultuply
     {
         public static void Main()
         {

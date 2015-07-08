@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. ConsoleApplication1", "ConsoleApplication1\1. ConsoleApplication1.csproj", "{F93E5A43-0119-4961-B21C-BDF4A1FBE9AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01.Matrix", "ConsoleApplication1\01.Matrix.csproj", "{F93E5A43-0119-4961-B21C-BDF4A1FBE9AD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2. Orders", "Orders\2. Orders.csproj", "{32FFFB9D-C7B7-4D0B-9392-231F62595912}"
 EndProject
