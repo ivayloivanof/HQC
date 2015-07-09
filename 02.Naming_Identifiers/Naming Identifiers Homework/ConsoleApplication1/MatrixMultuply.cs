@@ -18,7 +18,6 @@
             {
                 Console.WriteLine(ex.Message);
             }
-            
         }
 
         private static void PrintMatrix(double[,] matrix)
