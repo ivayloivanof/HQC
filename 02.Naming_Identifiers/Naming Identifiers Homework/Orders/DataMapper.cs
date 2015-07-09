@@ -11,6 +11,10 @@ namespace Orders
         private string productsFileName;
         private string ordersFileName;
 
+        private const string categoriesPath = "../../Data/categories.txt";
+        private const string productsPath = "../../Data/products.txt";
+        private const string ordersPath = "../../Data/orders.txt";
+
         public dataMapper(string categoriesFileName, string productsFileName, string ordersFileName)
         {
             this.categoriesFileName = categoriesFileName;
