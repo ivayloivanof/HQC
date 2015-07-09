@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using o;
+using Orders;
 using System.IO;
 
 namespace Orders
@@ -22,13 +22,13 @@ namespace Orders
             this.productsFileName = productsPath;
         }
 
-        public IEnumerable<category> getAllCategories()
+        public IEnumerable<Category> getAllCategories()
         {
             List<string> cat = readFileLines(this.categoriesFileName, true);
 
             return cat
                 .Select(c => c.Split(','))
-                .Select(c => new category
+                .Select(c => new Category
                 {
                     Id = int.Parse(c[0]),
                     NAME = c[1],
@@ -36,12 +36,12 @@ namespace Orders
                 });
         }
 
-        public IEnumerable<product> getAllProducts()
+        public IEnumerable<Product> getAllProducts()
         {
             var prod = readFileLines(this.productsFileName, true);
             return prod
                 .Select(p => p.Split(','))
-                .Select(p => new product
+                .Select(p => new Product
                 {
                     id = int.Parse(p[0]),
                     nome = p[1],
@@ -51,12 +51,12 @@ namespace Orders
                 });
         }
 
-        public IEnumerable<order> getAllOrders()
+        public IEnumerable<Order> getAllOrders()
         {
             var ord = readFileLines(this.ordersFileName, true);
             return ord
                 .Select(p => p.Split(','))
-                .Select(p => new order
+                .Select(p => new Order
                 {
                     ID = int.Parse(p[0]),
                     product_id = int.Parse(p[1]),
