@@ -1,30 +1,30 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Orders;
-using System.IO;
-
-namespace Orders
+﻿namespace Orders
 {
-    public class dataMapper
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+
+    public class DataMapper
     {
+        private const string CategoriesPath = "../../Data/categories.txt";
+        private const string ProductsPath = "../../Data/products.txt";
+        private const string OrdersPath = "../../Data/orders.txt";
+
         private string categoriesFileName;
         private string productsFileName;
         private string ordersFileName;
 
-        private const string categoriesPath = "../../Data/categories.txt";
-        private const string productsPath = "../../Data/products.txt";
-        private const string ordersPath = "../../Data/orders.txt";
-
-        public dataMapper()
+        public DataMapper()
         {
-            this.categoriesFileName = categoriesPath;
-            this.ordersFileName = ordersPath;
-            this.productsFileName = productsPath;
+            this.categoriesFileName = CategoriesPath;
+            this.ordersFileName = OrdersPath;
+            this.productsFileName = ProductsPath;
         }
 
-        public IEnumerable<Category> getAllCategories()
+        public IEnumerable<Category> GetAllCategories()
         {
-            List<string> categories = readFileLines(this.categoriesFileName, true);
+            List<string> categories = this.ReadFileLines(this.categoriesFileName, true);
+
             return categories
                 .Select(category => category.Split(','))
                 .Select(category => new Category
@@ -35,9 +35,10 @@ namespace Orders
                 });
         }
 
-        public IEnumerable<Product> getAllProducts()
+        public IEnumerable<Product> GetAllProducts()
         {
-            List<string> products = readFileLines(this.productsFileName, true);
+            List<string> products = this.ReadFileLines(this.productsFileName, true);
+
             return products
                 .Select(product => product.Split(','))
                 .Select(product => new Product
@@ -50,9 +51,10 @@ namespace Orders
                 });
         }
 
-        public IEnumerable<Order> getAllOrders()
+        public IEnumerable<Order> GetAllOrders()
         {
-            List<string> orders = readFileLines(this.ordersFileName, true);
+            List<string> orders = this.ReadFileLines(this.ordersFileName, true);
+
             return orders
                 .Select(order => order.Split(','))
                 .Select(order => new Order
@@ -64,7 +66,7 @@ namespace Orders
                 });
         }
 
-        private List<string> readFileLines(string filename, bool hasHeader)
+        private List<string> ReadFileLines(string filename, bool hasHeader)
         {
             //TODO hasHeader do not use
             var allLines = new List<string>();
