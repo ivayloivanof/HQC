@@ -10,9 +10,9 @@
         private const string ProductsPath = "../../Data/products.txt";
         private const string OrdersPath = "../../Data/orders.txt";
 
-        private string categoriesFileName;
-        private string productsFileName;
-        private string ordersFileName;
+        private readonly string categoriesFileName;
+        private readonly string productsFileName;
+        private readonly string ordersFileName;
 
         public DataMapper()
         {
@@ -68,7 +68,6 @@
 
         private List<string> ReadFileLines(string filename, bool hasHeader)
         {
-            //TODO hasHeader do not use
             var allLines = new List<string>();
             using (var reader = new StreamReader(filename))
             {

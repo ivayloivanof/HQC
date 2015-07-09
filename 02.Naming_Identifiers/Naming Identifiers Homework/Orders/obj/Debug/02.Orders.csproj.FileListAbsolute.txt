@@ -1,3 +1,6 @@
 C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\Orders\bin\Debug\Orders.exe.config
 C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\Orders\obj\Debug\Orders.exe
 C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\Orders\obj\Debug\Orders.pdb
+C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\Orders\bin\Debug\Orders.exe
+C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\Orders\bin\Debug\Orders.pdb
+C:\Users\Ivaylo Ivanov\Documents\GitHub\HQC\02.Naming_Identifiers\Naming Identifiers Homework\Orders\obj\Debug\02.Orders.csprojResolveAssemblyReference.cache
