@@ -5,21 +5,24 @@
 
     public static class Rating
     {
-        private static void ViewRating(List<Minesweeper.zaKlasiraneto> to4kii)
+        private const string PointsName = "Points";
+
+        private static void ViewRating(List<Point> points)
         {
-            Console.WriteLine("\nTo4KI:");
-            if (to4kii.Count > 0)
+            Console.WriteLine("\n{0}:", PointsName);
+
+            if (points.Count > 0)
             {
-                for (int i = 0; i < to4kii.Count; i++)
+                for (int i = 0; i < points.Count; i++)
                 {
-                    Console.WriteLine("{0}. {1} --> {2} kutii", i + 1, to4kii[i].igra4, to4kii[i].kolko);
+                    Console.WriteLine("{0}. {1} --> {2} cans", i + 1, points[i].Name, points[i].Points);
                 }
 
                 Console.WriteLine();
             }
             else
             {
-                Console.WriteLine("prazna klasaciq!\n");
+                Console.WriteLine(Messages.EmptyRaiting);
             }
         }
     }
