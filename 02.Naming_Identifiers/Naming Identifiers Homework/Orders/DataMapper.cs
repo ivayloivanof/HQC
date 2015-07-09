@@ -25,7 +25,6 @@ namespace Orders
         public IEnumerable<Category> getAllCategories()
         {
             List<string> cat = readFileLines(this.categoriesFileName, true);
-
             return cat
                 .Select(c => c.Split(','))
                 .Select(c => new Category
@@ -38,7 +37,7 @@ namespace Orders
 
         public IEnumerable<Product> getAllProducts()
         {
-            var products = readFileLines(this.productsFileName, true);
+            List<string> products = readFileLines(this.productsFileName, true);
             return products
                 .Select(product => product.Split(','))
                 .Select(product => new Product
@@ -53,7 +52,7 @@ namespace Orders
 
         public IEnumerable<Order> getAllOrders()
         {
-            var orders = readFileLines(this.ordersFileName, true);
+            List<string> orders = readFileLines(this.ordersFileName, true);
             return orders
                 .Select(order => order.Split(','))
                 .Select(order => new Order
@@ -67,6 +66,7 @@ namespace Orders
 
         private List<string> readFileLines(string filename, bool hasHeader)
         {
+            //TODO hasHeader do not use
             var allLines = new List<string>();
             using (var reader = new StreamReader(filename))
             {
