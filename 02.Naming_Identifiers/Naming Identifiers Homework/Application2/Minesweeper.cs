@@ -7,20 +7,14 @@
 
     public class Minesweeper
     {
-        //new class
-        public class zaKlasiraneto
-        {
-            // TODO : Points
-        }
-        //new class
-
         private static void Main()
         {
             string command = string.Empty;
             List<Point> champions = new List<Point>(6);
+            Field fields = new Field();
 
 
-            char[,] field = Field.CreatePlayingField();
+            char[,] field = fields.CreatePlayingField();
             char[,] bombs = Field.LayingBombs();
 
 
@@ -43,7 +37,15 @@
                 }
 
                 Console.Write(Messages.GiveRowAndColumn);
-                command = Console.ReadLine().Trim();
+                var readLine = Console.ReadLine();
+                if (readLine != null)
+                {
+                    command = readLine.Trim();
+                    if (command == "exit")
+                    {
+                        break;
+                    }
+                }
 
                 if (command.Length >= 3)
                 {
@@ -60,7 +62,7 @@
                         Rating.ViewRating(champions);
                         break;
                     case "restart":
-                        field = Field.CreatePlayingField();
+                        field = fields.CreatePlayingField();
                         bombs = Field.LayingBombs();
                         Field.PrintMatrix(field);
                         grum = false;
@@ -89,10 +91,6 @@
                             grum = true;
                         }
 
-                        break;
-                    default:
-                        // when wrong command
-                        Console.WriteLine(Messages.ErrorCommand);
                         break;
                 }
 
@@ -123,7 +121,7 @@
                     champions.Sort((Point r1, Point r2) => r2.Points.CompareTo(r1.Points));
                     Rating.ViewRating(champions);
 
-                    field = Field.CreatePlayingField();
+                    field = fields.CreatePlayingField();
                     bombs = Field.LayingBombs();
                     counter = 0;
                     grum = false;
@@ -139,7 +137,7 @@
                     Point points = new Point(imeee, counter);
                     champions.Add(points);
                     Rating.ViewRating(champions);
-                    field = Field.CreatePlayingField();
+                    field = fields.CreatePlayingField();
                     bombs = Field.LayingBombs();
                     counter = 0;
                     flag2 = false;
