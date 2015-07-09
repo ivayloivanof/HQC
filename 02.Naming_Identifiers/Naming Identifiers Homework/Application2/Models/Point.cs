@@ -2,10 +2,16 @@
 {
     using System;
 
-    class Point
+    public class Point
     {
         private string name;
         private int points;
+        
+        public Point(string name, int points)
+        {
+            this.Name = name;
+            this.Points = points;
+        }
 
         public string Name
         {
@@ -40,12 +46,6 @@
                 }
                 this.points = value;
             }
-        }
-
-        public Point(string name, int points)
-        {
-            this.Name = name;
-            this.Points = points;
         }
     }
 }
