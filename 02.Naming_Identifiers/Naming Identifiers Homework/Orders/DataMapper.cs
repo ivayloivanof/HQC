@@ -55,13 +55,13 @@ namespace Orders
         {
             var orders = readFileLines(this.ordersFileName, true);
             return orders
-                .Select(p => p.Split(','))
-                .Select(p => new Order
+                .Select(order => order.Split(','))
+                .Select(order => new Order
                 {
-                    ID = int.Parse(p[0]),
-                    ProductID = int.Parse(p[1]),
-                    Quant = int.Parse(p[2]),
-                    Discount = decimal.Parse(p[3]),
+                    ID = int.Parse(order[0]),
+                    ProductID = int.Parse(order[1]),
+                    Quant = int.Parse(order[2]),
+                    Discount = decimal.Parse(order[3]),
                 });
         }
 
