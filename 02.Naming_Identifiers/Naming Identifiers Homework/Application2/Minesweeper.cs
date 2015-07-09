@@ -3,57 +3,27 @@
     using System;
     using System.Collections.Generic;
 
+    using Models;
+
     public class Minesweeper
     {
         //new class
         public class zaKlasiraneto
         {
-            private string name;
-
-            private int points;
-
-            public string igra4
-            {
-                get
-                {
-                    return name;
-                }
-
-                set
-                {
-                    name = value;
-                }
-            }
-
-            public int kolko
-            {
-                get
-                {
-                    return points;
-                }
-
-                set
-                {
-                    points = value;
-                }
-            }
-
-            public zaKlasiraneto(string име, int то4ки)
-            {
-                this.name = име;
-                this.points = то4ки;
-            }
+            // TODO : Points
         }
         //new class
 
         private static void Main()
         {
             string command = string.Empty;
+            List<Point> champions = new List<Point>(6);
+
+
             char[,] poleto = create_igralno_pole();
             char[,] bombite = slojibombite();
             int broya4 = 0;
             bool grum = false;
-            List<zaKlasiraneto> shampion4eta = new List<zaKlasiraneto>(6);
             int red = 0;
             int kolona = 0;
             bool flag = true;
@@ -85,7 +55,7 @@
                 switch (command)
                 {
                     case "top":
-                        klasacia(shampion4eta);
+                        klasacia(champions);
                         break;
                     case "restart":
                         poleto = create_igralno_pole();
@@ -132,26 +102,26 @@
                     Console.Write("\nHrrrrrr! Umria gerojski s {0} to4ki. " + "Daj si niknejm: ", broya4);
                     string niknejm = Console.ReadLine();
                     zaKlasiraneto t = new zaKlasiraneto(niknejm, broya4);
-                    if (shampion4eta.Count < 5)
+                    if (champions.Count < 5)
                     {
-                        shampion4eta.Add(t);
+                        champions.Add(t);
                     }
                     else
                     {
-                        for (int i = 0; i < shampion4eta.Count; i++)
+                        for (int i = 0; i < champions.Count; i++)
                         {
-                            if (shampion4eta[i].kolko < t.kolko)
+                            if (champions[i].Points < t.kolko)
                             {
-                                shampion4eta.Insert(i, t);
-                                shampion4eta.RemoveAt(shampion4eta.Count - 1);
+                                champions.Insert(i, t);
+                                champions.RemoveAt(champions.Count - 1);
                                 break;
                             }
                         }
                     }
 
-                    shampion4eta.Sort((zaKlasiraneto r1, zaKlasiraneto r2) => r2.igra4.CompareTo(r1.igra4));
-                    shampion4eta.Sort((zaKlasiraneto r1, zaKlasiraneto r2) => r2.kolko.CompareTo(r1.kolko));
-                    klasacia(shampion4eta);
+                    champions.Sort((zaKlasiraneto r1, zaKlasiraneto r2) => r2.igra4.CompareTo(r1.igra4));
+                    champions.Sort((zaKlasiraneto r1, zaKlasiraneto r2) => r2.kolko.CompareTo(r1.kolko));
+                    klasacia(champions);
 
                     poleto = create_igralno_pole();
                     bombite = slojibombite();
@@ -167,8 +137,8 @@
                     Console.WriteLine("Daj si imeto, batka: ");
                     string imeee = Console.ReadLine();
                     zaKlasiraneto to4kii = new zaKlasiraneto(imeee, broya4);
-                    shampion4eta.Add(to4kii);
-                    klasacia(shampion4eta);
+                    champions.Add(to4kii);
+                    klasacia(champions);
                     poleto = create_igralno_pole();
                     bombite = slojibombite();
                     broya4 = 0;
@@ -181,24 +151,7 @@
             Console.WriteLine("AREEEEEEeeeeeee.");
             Console.Read();
         }
-
-        private static void klasacia(List<zaKlasiraneto> to4kii)
-        {
-            Console.WriteLine("\nTo4KI:");
-            if (to4kii.Count > 0)
-            {
-                for (int i = 0; i < to4kii.Count; i++)
-                {
-                    Console.WriteLine("{0}. {1} --> {2} kutii", i + 1, to4kii[i].igra4, to4kii[i].kolko);
-                }
-
-                Console.WriteLine();
-            }
-            else
-            {
-                Console.WriteLine("prazna klasaciq!\n");
-            }
-        }
+        
 
         private static void tisinahod(char[,] POLE, char[,] BOMBI, int RED, int KOLONA)
         {
