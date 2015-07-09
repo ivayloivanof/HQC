@@ -1,19 +1,19 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
-
-namespace Orders
+﻿namespace Orders
 {
-    class Orders
+    using System;
+    using System.Globalization;
+    using System.Linq;
+    using System.Threading;
+
+    internal class Orders
     {
-        static void Main()
+        public static void Main()
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            var filePaths = new dataMapper();
-            var allCategories = filePaths.getAllCategories();
-            var allProducts = filePaths.getAllProducts();
-            var allOrders = filePaths.getAllOrders();
+            var filePaths = new DataMapper();
+            var allCategories = filePaths.GetAllCategories();
+            var allProducts = filePaths.GetAllProducts();
+            var allOrders = filePaths.GetAllOrders();
 
             // Names of the 5 most expensive products
             var first = allProducts
