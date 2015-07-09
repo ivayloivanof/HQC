@@ -15,21 +15,17 @@ namespace Orders
         private const string productsPath = "../../Data/products.txt";
         private const string ordersPath = "../../Data/orders.txt";
 
-        public dataMapper(string categoriesFileName, string productsFileName, string ordersFileName)
-        {
-            this.categoriesFileName = categoriesFileName;
-            this.productsFileName = productsFileName;
-            this.ordersFileName = ordersFileName;
-        }
-
         public dataMapper()
-            : this("../../Data/categories.txt", "../../Data/products.txt", "../../Data/orders.txt")
         {
+            this.categoriesFileName = categoriesPath;
+            this.ordersFileName = ordersPath;
+            this.productsFileName = productsPath;
         }
 
         public IEnumerable<category> getAllCategories()
         {
-            var cat = readFileLines(this.categoriesFileName, true);
+            List<string> cat = readFileLines(this.categoriesFileName, true);
+
             return cat
                 .Select(c => c.Split(','))
                 .Select(c => new category
