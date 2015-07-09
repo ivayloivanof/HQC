@@ -5,7 +5,6 @@
 
     public class Minesweeper
     {
-
         //new class
         public class zaKlasiraneto
         {
