@@ -1,6 +1,6 @@
-﻿namespace o
+﻿namespace Orders
 {
-    public class category
+    public class Category
     {
         public int Id { get; set; }
         
