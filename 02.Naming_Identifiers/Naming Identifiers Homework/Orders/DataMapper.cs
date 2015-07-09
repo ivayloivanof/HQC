@@ -26,12 +26,12 @@ namespace Orders
         {
             List<string> categories = readFileLines(this.categoriesFileName, true);
             return categories
-                .Select(c => c.Split(','))
-                .Select(c => new Category
+                .Select(category => category.Split(','))
+                .Select(category => new Category
                 {
-                    ID = int.Parse(c[0]),
-                    Name = c[1],
-                    Description = c[2]
+                    ID = int.Parse(category[0]),
+                    Name = category[1],
+                    Description = category[2]
                 });
         }
 
