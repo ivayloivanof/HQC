@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace mini4ki
+﻿namespace mini4ki
 {
+    using System;
+    using System.Collections.Generic;
+
     public class Minesweeper
     {
         public class zaKlasiraneto
