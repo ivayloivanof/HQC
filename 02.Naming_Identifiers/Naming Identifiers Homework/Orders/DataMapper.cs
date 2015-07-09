@@ -53,8 +53,8 @@ namespace Orders
 
         public IEnumerable<Order> getAllOrders()
         {
-            var ord = readFileLines(this.ordersFileName, true);
-            return ord
+            var orders = readFileLines(this.ordersFileName, true);
+            return orders
                 .Select(p => p.Split(','))
                 .Select(p => new Order
                 {
