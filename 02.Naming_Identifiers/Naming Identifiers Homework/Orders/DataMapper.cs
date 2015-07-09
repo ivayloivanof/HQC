@@ -38,16 +38,16 @@ namespace Orders
 
         public IEnumerable<Product> getAllProducts()
         {
-            var prod = readFileLines(this.productsFileName, true);
-            return prod
-                .Select(p => p.Split(','))
-                .Select(p => new Product
+            var products = readFileLines(this.productsFileName, true);
+            return products
+                .Select(product => product.Split(','))
+                .Select(product => new Product
                 {
-                    ID = int.Parse(p[0]),
-                    Name = p[1],
-                    CatID = int.Parse(p[2]),
-                    UnitPrice = decimal.Parse(p[3]),
-                    UnitsInStock = int.Parse(p[4]),
+                    ID = int.Parse(product[0]),
+                    Name = product[1],
+                    CatID = int.Parse(product[2]),
+                    UnitPrice = decimal.Parse(product[3]),
+                    UnitsInStock = int.Parse(product[4]),
                 });
         }
 
