@@ -30,8 +30,8 @@ namespace Orders
                 .Select(c => c.Split(','))
                 .Select(c => new Category
                 {
-                    Id = int.Parse(c[0]),
-                    NAME = c[1],
+                    ID = int.Parse(c[0]),
+                    Name = c[1],
                     Description = c[2]
                 });
         }
@@ -43,10 +43,10 @@ namespace Orders
                 .Select(p => p.Split(','))
                 .Select(p => new Product
                 {
-                    id = int.Parse(p[0]),
-                    nome = p[1],
-                    catId = int.Parse(p[2]),
-                    unit_price = decimal.Parse(p[3]),
+                    ID = int.Parse(p[0]),
+                    Name = p[1],
+                    CatID = int.Parse(p[2]),
+                    UnitPrice = decimal.Parse(p[3]),
                     UnitsInStock = int.Parse(p[4]),
                 });
         }
@@ -59,8 +59,8 @@ namespace Orders
                 .Select(p => new Order
                 {
                     ID = int.Parse(p[0]),
-                    product_id = int.Parse(p[1]),
-                    quant = int.Parse(p[2]),
+                    ProductID = int.Parse(p[1]),
+                    Quant = int.Parse(p[2]),
                     Discount = decimal.Parse(p[3]),
                 });
         }
