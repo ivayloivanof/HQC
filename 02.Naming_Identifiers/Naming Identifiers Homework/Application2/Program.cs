@@ -1,10 +1,12 @@
-﻿namespace mini4ki
+﻿namespace Mines
 {
     using System;
     using System.Collections.Generic;
 
     public class Minesweeper
     {
+
+        //new class
         public class zaKlasiraneto
         {
             private string name;
@@ -37,18 +39,15 @@
                 }
             }
 
-            public zaKlasiraneto()
-            {
-            }
-
             public zaKlasiraneto(string име, int то4ки)
             {
                 this.name = име;
                 this.points = то4ки;
             }
         }
+        //new class
 
-        private static void Main(string[] аргументи)
+        private static void Main()
         {
             string command = string.Empty;
             char[,] poleto = create_igralno_pole();
