@@ -2,13 +2,13 @@
 {
     public class Product
     {
-        public int id { get; set; }
+        public int ID { get; set; }
 
-        public string nome { get; set; }
+        public string Name { get; set; }
 
-        public int catId { get; set; }
+        public int CatID { get; set; }
 
-        public decimal unit_price { get; set; }
+        public decimal UnitPrice { get; set; }
 
         public int UnitsInStock { get; set; }
     }
