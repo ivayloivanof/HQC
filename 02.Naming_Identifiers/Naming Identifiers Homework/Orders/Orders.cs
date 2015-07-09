@@ -24,7 +24,7 @@ namespace Orders
 
             Console.WriteLine(new string('-', 10));
 
-            // Number of products in each category
+            // Number of products in each Category
             var second = allProducts
                 .GroupBy(p => p.catId)
                 .Select(grp => new { Category = allCategories.First(c => c.Id == grp.Key).NAME, Count = grp.Count() })
@@ -36,7 +36,7 @@ namespace Orders
 
             Console.WriteLine(new string('-', 10));
 
-            // The 5 top products (by order quantity)
+            // The 5 top products (by Order quantity)
             var third = allOrders
                 .GroupBy(o => o.product_id)
                 .Select(grp => new { Product = allProducts.First(p => p.id == grp.Key).nome, Quantities = grp.Sum(grpgrp => grpgrp.quant) })
@@ -49,7 +49,7 @@ namespace Orders
 
             Console.WriteLine(new string('-', 10));
 
-            // The most profitable category
+            // The most profitable Category
             var category = allOrders
                 .GroupBy(o => o.product_id)
                 .Select(g => new { catId = allProducts.First(p => p.id == g.Key).catId, price = allProducts.First(p => p.id == g.Key).unit_price, quantity = g.Sum(p => p.quant) })
