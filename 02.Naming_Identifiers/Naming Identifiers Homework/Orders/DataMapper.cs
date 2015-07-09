@@ -24,8 +24,8 @@ namespace Orders
 
         public IEnumerable<Category> getAllCategories()
         {
-            List<string> cat = readFileLines(this.categoriesFileName, true);
-            return cat
+            List<string> categories = readFileLines(this.categoriesFileName, true);
+            return categories
                 .Select(c => c.Split(','))
                 .Select(c => new Category
                 {
