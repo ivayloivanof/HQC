@@ -1,28 +1,26 @@
-namespace ReformatCode
+namespace _01.ReformatCode
 {
     using System;
     using System.Text;
 
-    class Event : IComparable
+    public class Event : IComparable
     {
-        private DateTime date;
-        private string title;
-        private string location;
+        private readonly DateTime date;
 
-        public Event
-        (DateTime date, String title, String location)
+        private readonly string title;
+
+        private readonly string location;
+
+        public Event(DateTime date, string title, string location)
         {
             this.date = date;
-
             this.title = title;
             this.location = location;
         }
 
-        public int
-        CompareTo(object obj)
+        public int CompareTo(object obj)
         {
-            Event other =
-            obj as Event;
+            Event other = obj as Event;
             int byDate = this.date.CompareTo(other.date);
             int byTitle = this.title.CompareTo(other.title);
 
@@ -30,22 +28,21 @@ namespace ReformatCode
             byLocation = this.location.CompareTo(other.location);
             if (byDate == 0)
             {
-                if (byTitle == 0)
-                    return byLocation;
+                if (byTitle == 0) return byLocation;
                 else
-                { return byTitle; }
+                {
+                    return byTitle;
+                }
 
 
             }
-            else
-                return byDate;
+            else return byDate;
         }
 
         public override string ToString()
         {
             StringBuilder toString = new StringBuilder();
-            toString.Append(date
-                .ToString("yyyy-MM-ddTHH:mm:ss"));
+            toString.Append(this.date.ToString("yyyy-MM-ddTHH:mm:ss"));
 
 
             toString.Append(" | " + title);
@@ -53,34 +50,15 @@ namespace ReformatCode
             return toString.ToString();
         }
     }
+}
 
-    class Program
+class Program
     {
 
 
         static StringBuilder output = new StringBuilder();
 
-        static class Messages
-        {
-            public static void EventAdded()
-            { output.Append("Event added\n"); }
-            public static void EventDeleted(int x)
-            {
-                if (x == 0) NoEventsFound();
-
-                else output.AppendFormat("{0} events deleted\n", x);
-            }
-            public static void NoEventsFound() { output.Append("No events found\n"); }
-            public static void PrintEvent(Event eventToPrint)
-            {
-
-
-                if (eventToPrint != null)
-                {
-                    output.Append(eventToPrint + "\n");
-                }
-            }
-        }
+        
 
         class EventHolder
         {
@@ -134,7 +112,9 @@ namespace ReformatCode
                 }
                 if (showed == 0) Messages.NoEventsFound();
             }
-        } static EventHolder events = new EventHolder();
+        } 
+        
+        static EventHolder events = new EventHolder();
 
         static void Main(string[] args)
         {
