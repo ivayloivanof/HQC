@@ -11,20 +11,6 @@
 
         private char[,] board = new char[BoardRows, BoardColumns];
 
-        public char[,] CreatePlayingField()
-        {
-            // scan matrix and load start char in board
-            for (int i = 0; i < this.board.GetLength(0); i++)
-            {
-                for (int j = 0; j < this.board.GetLength(1); j++)
-                {
-                    this.board[i, j] = BoardCharStart;
-                }
-            }
-
-            return this.board;
-        }
-
         public static char[,] LayingBombs()
         {
             char[,] board = new char[BoardRows, BoardColumns];
@@ -36,8 +22,6 @@
                     board[i, j] = '-';
                 }
             }
-
-            // TODO : OPS
 
             List<int> r3 = new List<int>();
             while (r3.Count < 15)
@@ -87,6 +71,20 @@
             }
 
             Console.WriteLine("   ---------------------\n");
+        }
+
+        public char[,] CreatePlayingField()
+        {
+            // scan matrix and load start char in board
+            for (int i = 0; i < this.board.GetLength(0); i++)
+            {
+                for (int j = 0; j < this.board.GetLength(1); j++)
+                {
+                    this.board[i, j] = BoardCharStart;
+                }
+            }
+
+            return this.board;
         }
     }
 }
