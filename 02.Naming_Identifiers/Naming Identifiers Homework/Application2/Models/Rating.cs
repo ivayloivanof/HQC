@@ -7,7 +7,7 @@
     {
         private const string PointsName = "Points";
 
-        private static void ViewRating(List<Point> points)
+        public static void ViewRating(List<Point> points)
         {
             Console.WriteLine("\n{0}:", PointsName);
 
