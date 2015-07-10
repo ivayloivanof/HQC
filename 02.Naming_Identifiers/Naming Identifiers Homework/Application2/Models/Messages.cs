@@ -7,6 +7,8 @@
         public const string EmptyRaiting = "Rating is empty!\n";
         public const string GiveRowAndColumn = "Give row and column : ";
         public const string ErrorCommand = "\nERROR! Invalid command!\n";
+        public const string Bravo = "\nBravo! Open 35 cells without a drop of blood.";
+        public const string GiveYourName = "Give your name: ";
         public const string MadeInBulgaria = "Made in Bulgaria!";
         public const string GoodBye = "GoodBye!";
     }
