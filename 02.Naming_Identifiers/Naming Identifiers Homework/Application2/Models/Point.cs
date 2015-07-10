@@ -44,6 +44,7 @@
                 {
                     throw new ArgumentOutOfRangeException("Points", "This points cannot be negative!");
                 }
+
                 this.points = value;
             }
         }
