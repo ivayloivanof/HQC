@@ -153,18 +153,16 @@
         
         private static void Move(char[,] board, char[,] bombs, int row, int col)
         {
-            char kolkoBombi = kolko(bombs, row, col);
+            char kolkoBombi = AgregationOfPiecesPoints(bombs, row, col);
             bombs[row, col] = kolkoBombi;
             board[row, col] = kolkoBombi;
         }
         
-        private static char kolko(char[,] board, int row, int col)
+        private static char AgregationOfPiecesPoints(char[,] board, int row, int col)
         {
             int piece = 0;
-            int reds = board.GetLength(0);
-            int kols = board.GetLength(1);
-
-            Console.WriteLine();
+            int rowAll = board.GetLength(0);
+            int colAll = board.GetLength(1);
 
             if (row - 1 >= 0)
             {
@@ -174,7 +172,7 @@
                 }
             }
 
-            if (row + 1 < reds)
+            if (row + 1 < rowAll)
             {
                 if (board[row + 1, col] == '*')
                 {
@@ -190,7 +188,7 @@
                 }
             }
 
-            if (col + 1 < kols)
+            if (col + 1 < colAll)
             {
                 if (board[row, col + 1] == '*')
                 {
@@ -206,7 +204,7 @@
                 }
             }
 
-            if ((row - 1 >= 0) && (col + 1 < kols))
+            if ((row - 1 >= 0) && (col + 1 < colAll))
             {
                 if (board[row - 1, col + 1] == '*')
                 {
@@ -214,7 +212,7 @@
                 }
             }
 
-            if ((row + 1 < reds) && (col - 1 >= 0))
+            if ((row + 1 < rowAll) && (col - 1 >= 0))
             {
                 if (board[row + 1, col - 1] == '*')
                 {
@@ -222,7 +220,7 @@
                 }
             }
 
-            if ((row + 1 < reds) && (col + 1 < kols))
+            if ((row + 1 < rowAll) && (col + 1 < colAll))
             {
                 if (board[row + 1, col + 1] == '*')
                 {
