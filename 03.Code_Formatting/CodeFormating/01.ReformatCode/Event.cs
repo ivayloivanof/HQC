@@ -5,7 +5,7 @@ namespace _01.ReformatCode
 
     public class Event : IComparable
     {
-        private static readonly StringBuilder output = new StringBuilder();
+        private static StringBuilder output = new StringBuilder();
         private readonly DateTime date;
         private readonly string title;
         private readonly string location;
