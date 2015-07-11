@@ -19,32 +19,30 @@ namespace _01.ReformatCode
         public int CompareTo(object obj)
         {
             Event other = obj as Event;
+
             int byDate = this.date.CompareTo(other.date);
             int byTitle = this.title.CompareTo(other.title);
+            int byLocation = this.location.CompareTo(other.location);
 
-            int byLocation;
-            byLocation = this.location.CompareTo(other.location);
             if (byDate == 0)
             {
-                if (byTitle == 0)
-                {
-                    return byLocation;
-                }
-                
-                return byTitle;
+                return byTitle == 0 ? byLocation : byTitle;
             }
 
-            else return byDate;
+            return byDate;
         }
 
         public override string ToString()
         {
             StringBuilder toString = new StringBuilder();
             toString.Append(this.date.ToString("yyyy-MM-ddTHH:mm:ss"));
-            toString.Append(" | " + title);
-            if (location != null && location != "")
+            toString.Append(" | ");
+            toString.Append(this.title);
+
+            if (!string.IsNullOrEmpty(this.location))
             {
-                toString.Append(" | " + location);
+                toString.Append(" | ");
+                toString.Append(this.location);
             }
 
             return toString.ToString();
