@@ -9,7 +9,10 @@
 
         public static void EventDeleted(int x)
         {
-            if (x == 0) NoEventsFound();
+            if (x == 0)
+            {
+                NoEventsFound();
+            }
 
             else output.AppendFormat("{0} events deleted\n", x);
         }
