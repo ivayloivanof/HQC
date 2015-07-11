@@ -1,12 +1,11 @@
 ﻿namespace _01.ReformatCode
 {
     using System;
-    using System.Text;
 
     public class ReformatCodeStart
     {
-        private static StringBuilder output = new StringBuilder();
-        private static EventHolder events = new EventHolder();
+        
+        private static readonly EventHolder EventHolder = new EventHolder();
 
         public static void Main()
         {
@@ -14,40 +13,46 @@
             {
             }
 
-            Console.WriteLine(output);
+            Console.WriteLine(Event.Output);
         }
 
         private static bool ExecuteNextCommand()
         {
-            string command = Console.ReadLine();
-
-            if (command[0] == 'A')
+            try
             {
-                AddEvent(command);
+                string command = Console.ReadLine();
+                if (command[0] == 'A')
                 {
-                    return true;
+                    AddEvent(command);
+                    {
+                        return true;
+                    }
+                }
+
+                if (command[0] == 'D')
+                {
+                    DeleteEvents(command);
+                    {
+                        return true;
+                    }
+                }
+
+                if (command[0] == 'L')
+                {
+                    ListEvents(command);
+                    {
+                        return true;
+                    }
+                }
+
+                if (command[0] == 'E')
+                {
+                    return false;
                 }
             }
-
-            if (command[0] == 'D')
+            catch (NullReferenceException ex)
             {
-                DeleteEvents(command);
-                {
-                    return true;
-                }
-            }
-
-            if (command[0] == 'L')
-            {
-                ListEvents(command);
-                {
-                    return true;
-                }
-            }
-
-            if (command[0] == 'E')
-            {
-                return false;
+                Console.WriteLine(ex.Message);
             }
 
             return false;
@@ -59,13 +64,13 @@
             DateTime date = GetDate(command, "ListEvents");
             string countString = command.Substring(pipeIndex + 1);
             int count = int.Parse(countString);
-            events.ListEvents(date, count);
+            EventHolder.ListEvents(date, count);
         }
 
         private static void DeleteEvents(string command)
         {
             string title = command.Substring("DeleteEvents".Length + 1);
-            events.DeleteEvents(title);
+            EventHolder.DeleteEvents(title);
         }
 
         private static void AddEvent(string command)
@@ -75,7 +80,7 @@
             string location;
             GetParameters(command, "AddEvent", out date, out title, out location);
 
-            events.AddEvent(date, title, location);
+            EventHolder.AddEvent(date, title, location);
         }
 
         private static void GetParameters(
