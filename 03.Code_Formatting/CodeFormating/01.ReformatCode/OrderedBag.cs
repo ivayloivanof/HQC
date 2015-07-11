@@ -71,5 +71,12 @@
         public bool IsReadOnly { get; private set; }
 
         public bool IsFixedSize { get; private set; }
+
+        public static object ViewEventsToShow { get; set; }
+
+        public object RangeFrom(Event @event, bool b)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
