@@ -17,7 +17,7 @@ namespace _01.ReformatCode
             this.location = location;
         }
 
-        public string Output
+        public static string Output
         {
             get
             {
