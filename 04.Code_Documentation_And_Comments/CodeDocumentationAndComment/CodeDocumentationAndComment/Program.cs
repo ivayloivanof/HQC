@@ -15,7 +15,7 @@ namespace CodeDocumentationAndComment
     public class Program
     {
         /// <summary>
-        /// The main.
+        /// The main method for this program
         /// </summary>
         public static void Main()
         {

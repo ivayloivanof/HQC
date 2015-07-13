@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="StringExtensions.cs" company="">
+// <copyright file="StringExtensions.cs" company="SBTeam">
 //   
 // </copyright>
 // <summary>
@@ -23,13 +23,13 @@ namespace CodeDocumentationAndComment
     public static class StringExtensions
     {
         /// <summary>
-        /// The to md 5 hash.
+        /// Method return md5 hash 
         /// </summary>
         /// <param name="input">
-        /// The input.
+        /// The input string for hashing
         /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+		/// md5 hash
         /// </returns>
         public static string ToMd5Hash(this string input)
         {
