@@ -1,40 +1,64 @@
-﻿using System;
-
-namespace Abstraction
+﻿namespace Abstraction
 {
-    class Rectangle : Figure
+    using System;
+
+    public class Rectangle : IFigure
     {
-        public Rectangle()
-            : base(0, 0)
-        {
-        }
+        private double width;
+
+        private double height;
 
         public Rectangle(double width, double height)
-            : base(width, height)
         {
+            this.Width = width;
+            this.Height = height;
         }
 
-        public override double Radius
+        public double Width
         {
             get
             {
-                throw new NotImplementedException("Rectangle does not have Radius");
+                return this.width;
             }
-            set
+
+            private set
             {
-                throw new NotImplementedException("Rectangle does not have Radius");
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Width cannot be negative or zero.");
+                }
+
+                this.width = value;
             }
         }
 
-        public double CalcPerimeter()
+        public double Height
         {
-            double perimeter = 2 * (this.Width + this.Height);
+            get
+            {
+                return this.height;
+            }
+
+            private set
+            {
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Height cannot be negative or zero.");
+                }
+
+                this.height = value;
+            }
+        }
+
+        public double CalculationPerimeter()
+        {
+            var perimeter = 2 * (this.Width + this.Height);
             return perimeter;
         }
 
-        public double CalcSurface()
+        public double CalculationSurface()
         {
-            double surface = this.Width * this.Height;
+            var surface = this.Width * this.Height;
             return surface;
         }
     }
