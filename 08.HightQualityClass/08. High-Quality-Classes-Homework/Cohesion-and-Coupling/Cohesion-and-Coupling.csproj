@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="File.cs" />
+    <Compile Include="FileMissingExtension.cs" />
     <Compile Include="UtilsExamples.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>

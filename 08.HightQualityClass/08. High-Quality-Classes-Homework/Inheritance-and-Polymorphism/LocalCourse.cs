@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace InheritanceAndPolymorphism
+﻿namespace InheritanceAndPolymorphism
 {
+    using System.Collections.Generic;
+    using System.Text;
+
     public class LocalCourse
     {
-        public string Name { get; set; }
-        public string TeacherName { get; set; }
-        public IList<string> Students { get; set; }
-        public string Lab { get; set; }
-
         public LocalCourse(string name)
         {
             this.Name = name;
@@ -35,16 +29,22 @@ namespace InheritanceAndPolymorphism
             this.Lab = null;
         }
 
+        public string Name { get; set; }
+
+        public string TeacherName { get; set; }
+
+        public IList<string> Students { get; set; }
+
+        public string Lab { get; set; }
+
         private string GetStudentsAsString()
         {
             if (this.Students == null || this.Students.Count == 0)
             {
                 return "{ }";
             }
-            else
-            {
-                return "{ " + string.Join(", ", this.Students) + " }";
-            }
+            
+            return "{ " + string.Join(", ", this.Students) + " }";
         }
 
         public override string ToString()
@@ -57,6 +57,7 @@ namespace InheritanceAndPolymorphism
                 result.Append("; Teacher = ");
                 result.Append(this.TeacherName);
             }
+
             result.Append("; Students = ");
             result.Append(this.GetStudentsAsString());
             if (this.Lab != null)
@@ -64,7 +65,9 @@ namespace InheritanceAndPolymorphism
                 result.Append("; Lab = ");
                 result.Append(this.Lab);
             }
+
             result.Append(" }");
+
             return result.ToString();
         }
     }
