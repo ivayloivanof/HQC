@@ -1,10 +1,10 @@
-using System;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media.Media3D;
-
 namespace Microsoft._3DTools
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Input;
+    using System.Windows.Media.Media3D;
+
     /// <summary>
     ///     Trackball is a utility class which observes the mouse events
     ///     on a specified FrameworkElement and produces a Transform3D

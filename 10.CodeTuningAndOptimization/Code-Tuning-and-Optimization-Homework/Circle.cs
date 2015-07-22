@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows.Media.Media3D;
-
-namespace Surfaces
+﻿namespace Surfaces
 {
+    using System;
+    using System.Windows.Media.Media3D;
+
     public sealed class Circle : Surface
     {
         private static PropertyHolder<double, Circle> RadiusProperty =

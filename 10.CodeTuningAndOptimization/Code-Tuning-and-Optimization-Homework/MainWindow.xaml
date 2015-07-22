@@ -8,39 +8,39 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" x:Class="SolarSystem.MainWindow"
     xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic"     
-    Title="Solar System" Height="600" Width="766" Loaded="MainWindow_Loaded">
-	<Window.Resources>
+    Title="Solar System" Height="706.269" Width="945.104" Loaded="MainWindow_Loaded">
+    <Window.Resources>
         <Style x:Key="ImageCheckBox" TargetType="CheckBox">
             <Setter Property="Foreground" Value="#FF22226E" />
             <Setter Property="Template">
                 <Setter.Value>
-		            <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
                         <StackPanel Orientation="Horizontal">
                             <Image x:Name="CheckBoxMainImage" Source="Images/off.png" Stretch="None"/>
-			                <ContentPresenter x:Name="Presenter" VerticalAlignment="Center"/>
+                            <ContentPresenter x:Name="Presenter" VerticalAlignment="Center"/>
                         </StackPanel>
-			            <ControlTemplate.Triggers>
-				            <Trigger Property="IsChecked" Value="True">
-					            <Setter TargetName="CheckBoxMainImage" Property="Source" Value="Images/on.png"/>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckBoxMainImage" Property="Source" Value="Images/on.png"/>
                                 <Setter Property="Foreground" Value="#801020" />
-				            </Trigger>
-			            </ControlTemplate.Triggers>
-		            </ControlTemplate>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-	</Window.Resources>
+    </Window.Resources>
     <Grid Background="#FFECE5B9">
-    	<Grid.ColumnDefinitions>
-    		<ColumnDefinition/>
-    		<ColumnDefinition Width="176"/>
-    	</Grid.ColumnDefinitions>
-    	<Border Background="Black" CornerRadius="20" BorderThickness="10" BorderBrush="Gray" Grid.Column="0">
-    		<Border.BitmapEffect>
-    			<EmbossBitmapEffect LightAngle="45" Relief="12"/>
-    		</Border.BitmapEffect>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="176"/>
+        </Grid.ColumnDefinitions>
+        <Border Background="Black" CornerRadius="20" BorderThickness="10" BorderBrush="Gray" Grid.Column="0">
+            <Border.BitmapEffect>
+                <EmbossBitmapEffect LightAngle="45" Relief="12"/>
+            </Border.BitmapEffect>
             <_3DTools:TrackballDecorator>
-    		    <Viewport3D>
+                <Viewport3D>
                     <Viewport3D.Resources>
                         <MaterialGroup x:Key="GreyGoo">
                             <DiffuseMaterial>
@@ -50,91 +50,91 @@
                             </DiffuseMaterial>
                             <EmissiveMaterial>
                                 <EmissiveMaterial.Brush>
-                                    <SolidColorBrush Color="Gray" Opacity="0.3" />        
+                                    <SolidColorBrush Color="Gray" Opacity="0.3" />
                                 </EmissiveMaterial.Brush>
                             </EmissiveMaterial>
                         </MaterialGroup>
                     </Viewport3D.Resources>
-                    
-    			    <Viewport3D.Camera>
-    				    <PerspectiveCamera Position="-100 -100 100" LookDirection="1 1 -1"  UpDirection="0 0 1" FieldOfView="30"/>
-    			    </Viewport3D.Camera>
-    			    <ModelVisual3D>
-    				    <ModelVisual3D.Content>
-    					    <Model3DGroup>
-    						    <PointLight Color="White" Position="0 0 0"/>
-    						    <AmbientLight Color="#101010" />
-    					    </Model3DGroup>
-    				    </ModelVisual3D.Content>
-    			    </ModelVisual3D>
-    			    <ikriv:Sphere Radius="8" x:Name="Sun">
-    				    <ikriv:Sphere.Transform>
-    					    <Transform3DGroup>
-    						    <!-- Sun rotation axis orientation -->
-    						    <RotateTransform3D>
-    							    <RotateTransform3D.Rotation>
-    								    <AxisAngleRotation3D Axis="1,0,0" Angle="90"/>
-    							    </RotateTransform3D.Rotation>
-    						    </RotateTransform3D>
-    						    <!-- proper rotation of the Sun -->
-    						    <RotateTransform3D>
-    							    <RotateTransform3D.Rotation>
-    								    <AxisAngleRotation3D Axis="0,0,1" Angle="{Binding SunRotationAngle}"/>
-    							    </RotateTransform3D.Rotation>
-    						    </RotateTransform3D>
-    					    </Transform3DGroup>
-    				    </ikriv:Sphere.Transform>
-    				    <ikriv:Sphere.Material>
-    					    <MaterialGroup>
-    						    <DiffuseMaterial Brush="Black" />
-                                <EmissiveMaterial>
-    							    <EmissiveMaterial.Brush>
-    								    <ImageBrush ImageSource="/Images/SolarSurface.jpg" />
-    							    </EmissiveMaterial.Brush>
-    						    </EmissiveMaterial>
-    					    </MaterialGroup>
-    				    </ikriv:Sphere.Material>
-    			    </ikriv:Sphere>
 
-    			    <ikriv:Sphere Radius="5" x:Name="Earth">
-    				    <ikriv:Sphere.Transform>
-    					    <Transform3DGroup>
-    						    <!-- Earth proper rotation -->
-    						    <RotateTransform3D> 
-    							    <RotateTransform3D.Rotation>
-    								    <AxisAngleRotation3D 
+                    <Viewport3D.Camera>
+                        <PerspectiveCamera Position="-100 -100 100" LookDirection="1 1 -1"  UpDirection="0 0 1" FieldOfView="30"/>
+                    </Viewport3D.Camera>
+                    <ModelVisual3D>
+                        <ModelVisual3D.Content>
+                            <Model3DGroup>
+                                <PointLight Color="White" Position="0 0 0"/>
+                                <AmbientLight Color="#101010" />
+                            </Model3DGroup>
+                        </ModelVisual3D.Content>
+                    </ModelVisual3D>
+                    <ikriv:Sphere Radius="8" x:Name="Sun">
+                        <ikriv:Sphere.Transform>
+                            <Transform3DGroup>
+                                <!-- Sun rotation axis orientation -->
+                                <RotateTransform3D>
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D Axis="1,0,0" Angle="90"/>
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
+                                <!-- proper rotation of the Sun -->
+                                <RotateTransform3D>
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D Axis="0,0,1" Angle="{Binding SunRotationAngle}"/>
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
+                            </Transform3DGroup>
+                        </ikriv:Sphere.Transform>
+                        <ikriv:Sphere.Material>
+                            <MaterialGroup>
+                                <DiffuseMaterial Brush="Black" />
+                                <EmissiveMaterial>
+                                    <EmissiveMaterial.Brush>
+                                        <ImageBrush ImageSource="/Images/SolarSurface.jpg" />
+                                    </EmissiveMaterial.Brush>
+                                </EmissiveMaterial>
+                            </MaterialGroup>
+                        </ikriv:Sphere.Material>
+                    </ikriv:Sphere>
+
+                    <ikriv:Sphere Radius="5" x:Name="Earth">
+                        <ikriv:Sphere.Transform>
+                            <Transform3DGroup>
+                                <!-- Earth proper rotation -->
+                                <RotateTransform3D>
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D 
     									    Axis="0 1 0" 
     									    Angle="{Binding EarthRotationAngle}"/>
-    							    </RotateTransform3D.Rotation>
-    						    </RotateTransform3D>
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
 
-    						    <!-- Earth axis tilt -->
-    						    <RotateTransform3D>
-    							    <RotateTransform3D.Rotation>
-    								    <AxisAngleRotation3D 
+                                <!-- Earth axis tilt -->
+                                <RotateTransform3D>
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D 
     									    Axis="1 0 0" 
     									    Angle="67.5"/>
-    							    </RotateTransform3D.Rotation>
-    						    </RotateTransform3D>
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
 
-    						    <!-- Earth orbit position -->
-    						    <TranslateTransform3D 
+                                <!-- Earth orbit position -->
+                                <TranslateTransform3D 
     							    OffsetX="{Binding EarthOrbitPositionX}" 
     							    OffsetY="{Binding EarthOrbitPositionY}" 
     							    OffsetZ="{Binding EarthOrbitPositionZ}" />
-    					    </Transform3DGroup>
-    				    </ikriv:Sphere.Transform>
-                        
-    				    <ikriv:Sphere.Material>
-    					    <MaterialGroup>
-    						    <DiffuseMaterial>
-    							    <DiffuseMaterial.Brush>
-    								    <ImageBrush ImageSource="/Images/earth.jpg" />
-    							    </DiffuseMaterial.Brush>
-    						    </DiffuseMaterial>
-    					    </MaterialGroup>
-    				    </ikriv:Sphere.Material>
-    			    </ikriv:Sphere>
+                            </Transform3DGroup>
+                        </ikriv:Sphere.Transform>
+
+                        <ikriv:Sphere.Material>
+                            <MaterialGroup>
+                                <DiffuseMaterial>
+                                    <DiffuseMaterial.Brush>
+                                        <ImageBrush ImageSource="/Images/earth.jpg" />
+                                    </DiffuseMaterial.Brush>
+                                </DiffuseMaterial>
+                            </MaterialGroup>
+                        </ikriv:Sphere.Material>
+                    </ikriv:Sphere>
 
                     <ikriv:Circle x:Name="OrbitPlane" 
                                   Radius="{Binding EarthOrbitRadius}" 
@@ -143,26 +143,26 @@
                                   BackMaterial="{StaticResource GreyGoo}" />
                 </Viewport3D>
             </_3DTools:TrackballDecorator>
-    	</Border>
-    	<Grid VerticalAlignment="Stretch" Grid.Column="1" Margin="5">
-    		<Grid.RowDefinitions>
-    			<RowDefinition Height="40.95"/>
-    			<RowDefinition Height="69.029"/>
-    			<RowDefinition Height="40"/>
+        </Border>
+        <Grid VerticalAlignment="Stretch" Grid.Column="1" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40.95"/>
+                <RowDefinition Height="69.029"/>
+                <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*" />
-    		</Grid.RowDefinitions>
-    		<Grid.ColumnDefinitions>
-    			<ColumnDefinition Width="0.427*"/>
-    			<ColumnDefinition Width="0.573*"/>
-    		</Grid.ColumnDefinitions>
-    		<TextBlock Margin="0,0,0,10.336" Text="Days:" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" FontSize="26.667" FontFamily="Arial" Foreground="#FF22226E"/>
-    		<TextBlock x:Name="DaysCount" Margin="0,0,0,10.336" FontFamily="Arial" FontSize="26.667" TextWrapping="Wrap" d:LayoutOverrides="Height" Grid.Column="1" HorizontalAlignment="Right" Text="{Binding Days, StringFormat=F2}"/>
-    		<TextBlock Margin="5,8,5,42.05" Grid.Row="1" TextWrapping="Wrap" Grid.ColumnSpan="2" Foreground="#FF22226E"><Run Text="Rotation speed: "/><InlineUIContainer>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.427*"/>
+                <ColumnDefinition Width="0.573*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Margin="0,0,0,10.336" Text="Days:" TextWrapping="Wrap" d:LayoutOverrides="Width, Height" FontSize="26.667" FontFamily="Arial" Foreground="#FF22226E"/>
+            <TextBlock x:Name="DaysCount" Margin="0,0,0,10.336" FontFamily="Arial" FontSize="26.667" TextWrapping="Wrap" d:LayoutOverrides="Height" Grid.Column="1" HorizontalAlignment="Right" Text="{Binding Days, StringFormat=F2}"/>
+            <TextBlock Margin="5,8,5,42.05" Grid.Row="1" TextWrapping="Wrap" Grid.ColumnSpan="2" Foreground="#FF22226E"><Run Text="Rotation speed: "/><InlineUIContainer>
     				<TextBlock Text="{Binding DaysPerSecond, StringFormat=F1}"/>
     			</InlineUIContainer><Run Text=" days/s"/></TextBlock>
-    		<Slider Margin="5,31,5,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" AutoToolTipPlacement="BottomRight" Minimum="0.1" TickPlacement="BottomRight" Value="{Binding DaysPerSecond}" AutoToolTipPrecision="1"/>
+            <Slider Margin="5,31,5,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1" AutoToolTipPlacement="BottomRight" Minimum="0.1" TickPlacement="BottomRight" Value="{Binding DaysPerSecond}" AutoToolTipPrecision="1"/>
             <CheckBox Grid.ColumnSpan="2" Grid.Row="2" Style="{StaticResource ImageCheckBox}" Height="36" Checked="Pause_Checked" Unchecked="Pause_Unchecked">
                 <TextBlock Margin="0,4,0,0" TextWrapping="Wrap" FontFamily="Arial" FontSize="18.667" VerticalAlignment="Center"><Run Text="Pause"/></TextBlock>
             </CheckBox>

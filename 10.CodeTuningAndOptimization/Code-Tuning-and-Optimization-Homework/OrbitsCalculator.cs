@@ -1,21 +1,21 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Threading;
-
-namespace SolarSystem
+﻿namespace SolarSystem
 {
-    class OrbitsCalculator : INotifyPropertyChanged
+    using System;
+    using System.ComponentModel;
+    using System.Windows.Threading;
+
+    public class OrbitsCalculator : INotifyPropertyChanged
     {
-        private DateTime _startTime;
-        private double _startDays;
-        private DispatcherTimer _timer;
 
         const double EarthYear = 365.25;
         const double EarthRotationPeriod = 1.0;
         const double SunRotationPeriod = 25.0;
         const double TwoPi = Math.PI * 2;
 
+        private DateTime _startTime;
+        private DispatcherTimer _timer;
         private double _daysPerSecond = 2;
+
         public double DaysPerSecond
         {
             get { return _daysPerSecond; }
@@ -23,13 +23,21 @@ namespace SolarSystem
         }
 
         public double EarthOrbitRadius { get { return 40; } set { } }
+
         public double Days { get; set; }
+
         public double EarthRotationAngle { get; set; }
+
         public double SunRotationAngle { get; set; }
+
         public double EarthOrbitPositionX { get; set; }
+
         public double EarthOrbitPositionY { get; set; }
+
         public double EarthOrbitPositionZ { get; set; }
+
         public bool ReverseTime { get; set; }
+
         public bool Paused { get; set; }
 
         public OrbitsCalculator()

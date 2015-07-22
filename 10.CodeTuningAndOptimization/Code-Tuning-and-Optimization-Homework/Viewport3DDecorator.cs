@@ -1,13 +1,13 @@
-using System;
-using System.Collections;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Media;
-using System.Windows.Markup; // IAddChild, ContentPropertyAttribute
-
 namespace Microsoft._3DTools
 {
+    using System;
+    using System.Collections;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Data;
+    using System.Windows.Markup;
+    using System.Windows.Media;
+
     /// <summary>
     /// This class enables a Viewport3D to be enhanced by allowing UIElements to be placed 
     /// behind and in front of the Viewport3D.  These can then be used for various enhancements.  

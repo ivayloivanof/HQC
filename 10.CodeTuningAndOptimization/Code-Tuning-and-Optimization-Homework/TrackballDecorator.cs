@@ -1,13 +1,12 @@
-using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Media3D;
-using System.Windows.Input;
- // IAddChild, ContentPropertyAttribute
-
 namespace Microsoft._3DTools
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+    using System.Windows.Media;
+    using System.Windows.Media.Media3D;
+
     public class TrackballDecorator : Viewport3DDecorator
     {
         public TrackballDecorator()

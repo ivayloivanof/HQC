@@ -1,7 +1,7 @@
-﻿using System.Windows;
-
-namespace Surfaces
+﻿namespace Surfaces
 {
+    using System.Windows;
+
     public class PropertyHolder<PropertyType, HoldingType> where HoldingType:DependencyObject
     {
         DependencyProperty _property;

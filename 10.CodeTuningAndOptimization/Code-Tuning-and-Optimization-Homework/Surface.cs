@@ -1,9 +1,9 @@
-using System;
-using System.Windows;
-using System.Windows.Media.Media3D;
-
 namespace Surfaces
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Media.Media3D;
+
     public abstract class Surface : ModelVisual3D
     {
         public Surface()
@@ -12,14 +12,11 @@ namespace Surfaces
             _content.Geometry = CreateMesh();
         }
 
-        public static PropertyHolder<Material, Surface> MaterialProperty =
-            new PropertyHolder<Material,Surface>("Material", null, OnMaterialChanged);
+        public static PropertyHolder<Material, Surface> MaterialProperty = new PropertyHolder<Material,Surface>("Material", null, OnMaterialChanged);
 
-        public static PropertyHolder<Material, Surface> BackMaterialProperty =
-            new PropertyHolder<Material, Surface>("BackMaterial", null, OnBackMaterialChanged);
+        public static PropertyHolder<Material, Surface> BackMaterialProperty = new PropertyHolder<Material, Surface>("BackMaterial", null, OnBackMaterialChanged);
 
-        public static PropertyHolder<bool, Surface> VisibleProperty =
-            new PropertyHolder<bool, Surface>("Visible", true, OnVisibleChanged);
+        public static PropertyHolder<bool, Surface> VisibleProperty = new PropertyHolder<bool, Surface>("Visible", true, OnVisibleChanged);
 
         public Material Material
         {

@@ -1,10 +1,10 @@
-using System;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Media3D;
-
 namespace Surfaces
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Media;
+    using System.Windows.Media.Media3D;
+
     public sealed class Sphere : Surface
     {
         private static PropertyHolder<double, Sphere> RadiusProperty =
