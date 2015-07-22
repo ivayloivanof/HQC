@@ -1,27 +1,28 @@
-﻿using System;
-
-public class CSharpExam : Exam
+﻿namespace Exceptions_Homework
 {
-    public CSharpExam(int score)
+    using System;
+
+    public class CSharpExam : Exam
     {
-        if (score < 0)
+        public CSharpExam(int score)
         {
-            throw new NullReferenceException();
+            if (score < 0)
+            {
+                throw new NullReferenceException();
+            }
+
+            this.Score = score;
         }
 
-        this.Score = score;
-    }
+        public int Score { get; private set; }
 
-    public int Score { get; private set; }
-
-    public override ExamResult Check()
-    {
-        if (this.Score < 0 || this.Score > 100)
+        public override ExamResult Check()
         {
-            throw new InvalidOperationException();
-        }
-        else
-        {
+            if (this.Score < 0 || this.Score > 100)
+            {
+                throw new InvalidOperationException();
+            }
+            
             return new ExamResult(this.Score, 0, 100, "Exam results calculated by score.");
         }
     }
