@@ -37,6 +37,10 @@
             where T : IComparable<T>
         {
             var minElementIndex = startIndex;
+            Debug.Assert(startIndex < 0, "Start index cannot be negative number.");
+            Debug.Assert(endIndex < 0, "End index cannot be negative number.");
+            Debug.Assert(startIndex > endIndex, "Start index number cannot be to bigger from the end index number.");
+
             for (int i = startIndex + 1; i <= endIndex; i++)
             {
                 if (arr[i].CompareTo(arr[minElementIndex]) < 0)
@@ -71,7 +75,6 @@
                 }
                 else 
                 {
-                    // Search on the right half
                     endIndex = midIndex - 1;
                 }
             }
