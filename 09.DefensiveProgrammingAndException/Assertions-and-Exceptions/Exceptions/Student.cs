@@ -6,36 +6,61 @@
 
     public class Student
     {
+
+        private string firstName;
+
+        private string lastName;
+
         public Student(string firstName, string lastName, IList<Exam> exams = null)
         {
-            if (firstName == null)
-            {
-                Console.WriteLine("Invalid first name!");
-                Environment.Exit(0);
-            }
-
-            if (lastName == null)
-            {
-                Console.WriteLine("Invalid first name!");
-                Environment.Exit(0);
-            }
-
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Exams = exams;
         }
 
-        public string FirstName { get; set; }
+        public string FirstName
+        {
+            get
+            {
+                return this.firstName;
+            }
 
-        public string LastName { get; set; }
+            private set
+            {
+                if (String.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("Invalid first name!");
+                }
 
-        public IList<Exam> Exams { get; set; }
+                this.firstName = value.Trim();
+            }
+        }
+
+        public string LastName
+        {
+            get
+            {
+                return this.lastName;
+            }
+
+            private set
+            {
+                if (String.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentNullException("Invalid last name!");
+                }
+
+                this.lastName = value.Trim();
+            }
+        }
+
+        public IList<Exam> Exams { get; private set; }
 
         public IList<ExamResult> CheckExams()
         {
             if (this.Exams == null)
             {
-                throw new Exception("Wow! Error happened!!!");
+                throw new ArgumentNullException("Wow! Error happened!!!");
             }
 
             if (this.Exams.Count == 0)
@@ -67,7 +92,7 @@
                 return -1;
             }
 
-            double[] examScore = new double[this.Exams.Count];
+            var examScore = new double[this.Exams.Count];
             IList<ExamResult> examResults = this.CheckExams();
             for (int i = 0; i < examResults.Count; i++)
             {

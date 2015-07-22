@@ -20,32 +20,62 @@
             var emptyarr = Subsequence(new[] { -1, 3, 2, 1 }, 0, 0);
             Console.WriteLine(String.Join(" ", emptyarr));
 
-            Console.WriteLine(ExtractEnding("I love C#", 2));
-            Console.WriteLine(ExtractEnding("Nakov", 4));
-            Console.WriteLine(ExtractEnding("beer", 4));
-            Console.WriteLine(ExtractEnding("Hi", 100));
-
             try
             {
-                CheckPrime(23);
-                Console.WriteLine("23 is prime.");
+                Console.WriteLine(ExtractEnding("I love C#", 2));
             }
-            catch (Exception ex)
+            catch (ArgumentOutOfRangeException ex)
             {
-                Console.WriteLine("23 is not prime");
+                Console.WriteLine(ex.Message);
             }
 
             try
             {
-                CheckPrime(33);
+                Console.WriteLine(ExtractEnding("Nakov", 4));
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                Console.WriteLine(ExtractEnding("beer", 4));
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                Console.WriteLine(ExtractEnding("Hi", 100));
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
+            try
+            {
+                Console.WriteLine("{0} is prime", CheckPrime(23));
+            }
+            catch (IsNotPrimeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            try
+            {
+                Console.WriteLine("{0} is prime", CheckPrime(33));
                 Console.WriteLine("33 is prime.");
             }
-            catch (Exception ex)
+            catch (IsNotPrimeException ex)
             {
-                Console.WriteLine("33 is not prime");
+                Console.WriteLine(ex.Message);
             }
 
-            List<Exam> peterExams = new List<Exam>()
+            var peterExams = new List<Exam>()
                                         {
                                             new SimpleMathExam(2),
                                             new CSharpExam(55),
@@ -53,15 +83,16 @@
                                             new SimpleMathExam(1),
                                             new CSharpExam(0),
                                         };
-            Student peter = new Student("Peter", "Petrov", peterExams);
-            double peterAverageResult = peter.CalcAverageExamResultInPercents();
+            var peter = new Student("Peter", "Petrov", peterExams);
+            var peterAverageResult = peter.CalcAverageExamResultInPercents();
+
             Console.WriteLine("Average results = {0:p0}", peterAverageResult);
         }
 
         public static T[] Subsequence<T>(T[] arr, int startIndex, int count)
         {
-            List<T> result = new List<T>();
-            for (int i = startIndex; i < startIndex + count; i++)
+            var result = new List<T>();
+            for (var i = startIndex; i < startIndex + count; i++)
             {
                 result.Add(arr[i]);
             }
@@ -73,11 +104,11 @@
         {
             if (count > str.Length)
             {
-                return "Invalid count!";
+                throw new ArgumentOutOfRangeException("The number of elements in string, is greater than the length of string.");
             }
 
-            StringBuilder result = new StringBuilder();
-            for (int i = str.Length - count; i < str.Length; i++)
+            var result = new StringBuilder();
+            for (var i = str.Length - count; i < str.Length; i++)
             {
                 result.Append(str[i]);
             }
@@ -85,15 +116,17 @@
             return result.ToString();
         }
 
-        public static void CheckPrime(int number)
+        public static int CheckPrime(int number)
         {
-            for (int divisor = 2; divisor <= Math.Sqrt(number); divisor++)
+            for (var divisor = 2; divisor <= Math.Sqrt(number); divisor++)
             {
                 if (number % divisor == 0)
                 {
-                    throw new Exception("The number is not prime!");
+                    throw new IsNotPrimeException(String.Format("The number {0}, is not prime!", number));
                 }
             }
+
+            return number;
         }
     }
 }
