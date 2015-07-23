@@ -178,7 +178,7 @@ namespace Microsoft._3DTools
         {
             get
             {
-                return _preViewportChildren;
+                return this._preViewportChildren;
             }
         }
 
@@ -189,7 +189,7 @@ namespace Microsoft._3DTools
         {
             get
             {
-                return _postViewportChildren;
+                return this._postViewportChildren;
             }
         }
        
