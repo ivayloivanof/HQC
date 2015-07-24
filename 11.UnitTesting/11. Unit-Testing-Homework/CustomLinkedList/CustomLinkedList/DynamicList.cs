@@ -167,7 +167,7 @@
             if (currentNode != null)
             {
                 // The element is found in the list -> remove it
-                RemoveListNode(currentNode, prevNode);
+                this.RemoveListNode(currentNode, prevNode);
                 return currentIndex;
             }
 

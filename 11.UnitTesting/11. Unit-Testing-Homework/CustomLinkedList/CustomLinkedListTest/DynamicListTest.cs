@@ -130,5 +130,31 @@
             // Assert
             Assert.IsTrue(isFound, "This elements is not found.");
         }
+
+        [TestMethod]
+        public void TestDynamicListIndexGetSet()
+        {
+            var dynamicList = new DynamicList<int>();
+            dynamicList[0] = 0;
+            dynamicList[1] = 2;
+            dynamicList[2] = 4;
+            dynamicList[3] = 8;
+
+            // Act
+            var index = dynamicList[2];
+
+            // Assert
+            Assert.AreEqual(2, index);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestDynamicListIndexGetSetException()
+        {
+            var dynamicList = new DynamicList<int>();
+
+            // Assert
+            Assert.AreEqual(1, dynamicList[0]);
+        }
     }
 }
