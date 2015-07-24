@@ -135,16 +135,16 @@
         public void TestDynamicListIndexGetSet()
         {
             var dynamicList = new DynamicList<int>();
-            dynamicList[0] = 0;
-            dynamicList[1] = 2;
-            dynamicList[2] = 4;
-            dynamicList[3] = 8;
+            dynamicList.Add(3);
+            dynamicList.Add(6);
 
             // Act
-            var index = dynamicList[2];
+            int index = dynamicList[0];
+            dynamicList[1] = 5;
 
             // Assert
-            Assert.AreEqual(2, index);
+            Assert.AreEqual(3, index);
+            Assert.AreEqual(5, dynamicList[1]);
         }
 
         [TestMethod]
