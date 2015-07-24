@@ -104,7 +104,7 @@
         }
 
         [TestMethod]
-        public void TestIndexOfForEmptyList()
+        public void TestIndexOfForIsEmptyList()
         {
             var dynamicList = new DynamicList<int>();
 
@@ -112,7 +112,23 @@
             var returnetIndex = dynamicList.IndexOf(0);
 
             // Assert
-            Assert.IsTrue(returnetIndex < 0, "This list is empty.");
+            Assert.IsTrue(returnetIndex < 0, "This list is not empty.");
+        }
+
+        [TestMethod]
+        public void TestContains()
+        {
+            var dynamicList = new DynamicList<int>();
+            dynamicList.Add(0);
+            dynamicList.Add(2);
+            dynamicList.Add(4);
+            dynamicList.Add(8);
+
+            // Act
+            var isFound = dynamicList.Contains(4);
+
+            // Assert
+            Assert.IsTrue(isFound, "This elements is not found.");
         }
     }
 }
