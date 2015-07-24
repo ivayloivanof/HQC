@@ -84,24 +84,35 @@
             var removedElementIndex = dynamicList.Remove(1);
 
             // Assert
-            Assert.IsTrue(removedElementIndex < 0);
+            Assert.IsTrue(removedElementIndex < 0, "List in not empty or not found");
         }
 
         [TestMethod]
         public void TestIndexOf()
         {
             var dynamicList = new DynamicList<int>();
-            var elementForRemove = 2;
             dynamicList.Add(0);
-            dynamicList.Add(elementForRemove);
+            dynamicList.Add(2);
             dynamicList.Add(4);
+            dynamicList.Add(8);
 
             // Act
-            var removedElementIndex = dynamicList.Remove(elementForRemove);
+            var returnetIndex = dynamicList.IndexOf(4);
 
             // Assert
-            Assert.AreEqual(dynamicList[1], 4, "Element for remove not removed.");
-            Assert.AreEqual(2, dynamicList.Count, "Dynamic list not remove element.");
+            Assert.AreEqual(2, returnetIndex, "This index is not valid index.");
+        }
+
+        [TestMethod]
+        public void TestIndexOfForEmptyList()
+        {
+            var dynamicList = new DynamicList<int>();
+
+            // Act
+            var returnetIndex = dynamicList.IndexOf(0);
+
+            // Assert
+            Assert.IsTrue(returnetIndex < 0, "This list is empty.");
         }
     }
 }
