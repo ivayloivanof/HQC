@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CustomLinkedList
+﻿namespace CustomLinkedList
 {
+    using System;
+
     /// <summary>Dynamic (linked) list class definition</summary>
     public class DynamicList<T>
     {
