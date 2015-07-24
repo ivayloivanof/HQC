@@ -1,5 +1,7 @@
 ﻿namespace CustomLinkedListTest
 {
+    using System;
+
     using CustomLinkedList;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -43,6 +45,17 @@
             // Assert
             Assert.AreEqual(elementForRemove, removedElement, "Element for remove not removed.");
             Assert.AreEqual(2, dynamicList.Count, "Dynamic list not remove element.");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestRemoveAtElementForExceptionWhenCountIsZeroOrNegative()
+        {
+            var dynamicList = new DynamicList<int>();
+            var elementForRemove = 1;
+
+            // Act
+            dynamicList.RemoveAt(elementForRemove);
         }
     }
 }
