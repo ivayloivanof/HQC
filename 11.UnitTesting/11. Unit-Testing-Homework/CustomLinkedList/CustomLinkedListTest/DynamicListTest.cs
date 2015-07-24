@@ -57,5 +57,35 @@
             // Act
             dynamicList.RemoveAt(elementForRemove);
         }
+
+        [TestMethod]
+        public void TestRemoveElementsOfList()
+        {
+            var dynamicList = new DynamicList<int>();
+            var elementForRemove = 2;
+            dynamicList.Add(0);
+            dynamicList.Add(elementForRemove);
+            dynamicList.Add(4);
+
+            // Act
+            var removedElementIndex = dynamicList.Remove(elementForRemove);
+
+            // Assert
+            Assert.AreEqual(dynamicList[1], 4, "Element for remove not removed.");
+            Assert.AreEqual(2, dynamicList.Count, "Dynamic list not remove element.");
+        }
+
+        [TestMethod]
+        public void TestRemoveElementsOfListWhenListIsEmpty()
+        {
+            var dynamicList = new DynamicList<int>();
+
+            // Act
+            var removedElementIndex = dynamicList.RemoveAt(1);
+
+            // Assert
+            Assert.AreEqual(dynamicList[1], 4, "Element for remove not removed.");
+            Assert.AreEqual(2, dynamicList.Count, "Dynamic list not remove element.");
+        }
     }
 }

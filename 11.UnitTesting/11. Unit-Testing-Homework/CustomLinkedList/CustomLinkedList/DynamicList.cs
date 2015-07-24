@@ -151,6 +151,7 @@
             int currentIndex = 0;
             ListNode currentNode = this.head;
             ListNode prevNode = null;
+
             while (currentNode != null)
             {
                 if (object.Equals(currentNode.Element, item))
