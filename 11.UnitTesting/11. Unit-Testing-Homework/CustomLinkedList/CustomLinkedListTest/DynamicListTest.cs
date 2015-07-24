@@ -10,14 +10,14 @@
         [TestMethod]
         public void TestConstructorSetCountToZero()
         {
-            DynamicList<int> dynamicList = new DynamicList<int>();
+            var dynamicList = new DynamicList<int>();
             Assert.AreEqual(0, dynamicList.Count, "Dynamic list, constructor not set Count to zero.");
         }
 
         [TestMethod]
         public void TestAddThreeElements()
         {
-            DynamicList<int> dynamicList = new DynamicList<int>();
+            var dynamicList = new DynamicList<int>();
 
             // Act
             dynamicList.Add(0);
@@ -31,14 +31,14 @@
         [TestMethod]
         public void TestRemoveAtElementsOfList()
         {
-            DynamicList<int> dynamicList = new DynamicList<int>();
-            int elementForRemove = 1;
+            var dynamicList = new DynamicList<int>();
+            var elementForRemove = 1;
             dynamicList.Add(0);
             dynamicList.Add(elementForRemove);
             dynamicList.Add(2);
 
             // Act
-            int removedElement = dynamicList.RemoveAt(1);
+            var removedElement = dynamicList.RemoveAt(1);
 
             // Assert
             Assert.AreEqual(elementForRemove, removedElement, "Element for remove not removed.");
