@@ -81,11 +81,10 @@
             var dynamicList = new DynamicList<int>();
 
             // Act
-            var removedElementIndex = dynamicList.RemoveAt(1);
+            var removedElementIndex = dynamicList.Remove(1);
 
             // Assert
-            Assert.AreEqual(dynamicList[1], 4, "Element for remove not removed.");
-            Assert.AreEqual(2, dynamicList.Count, "Dynamic list not remove element.");
+            Assert.IsTrue(removedElementIndex < 0);
         }
     }
 }
