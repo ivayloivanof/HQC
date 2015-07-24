@@ -10,14 +10,14 @@
     public class DynamicListTest
     {
         [TestMethod]
-        public void TestConstructorSetCountToZero()
+        public void TestEmptyConstructorSetCountToZero()
         {
             var dynamicList = new DynamicList<int>();
             Assert.AreEqual(0, dynamicList.Count, "Dynamic list, constructor not set Count to zero.");
         }
 
         [TestMethod]
-        public void TestAddThreeElements()
+        public void TestAdd()
         {
             var dynamicList = new DynamicList<int>();
 
@@ -31,7 +31,7 @@
         }
 
         [TestMethod]
-        public void TestRemoveAtElementsOfList()
+        public void TestRemoveAt()
         {
             var dynamicList = new DynamicList<int>();
             var elementForRemove = 1;
@@ -49,7 +49,7 @@
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestRemoveAtElementForExceptionWhenCountIsZeroOrNegative()
+        public void TestRemoveAtForExceptionWhenCountIsZeroOrNegative()
         {
             var dynamicList = new DynamicList<int>();
             var elementForRemove = 1;
@@ -59,7 +59,7 @@
         }
 
         [TestMethod]
-        public void TestRemoveElementsOfList()
+        public void TestRemove()
         {
             var dynamicList = new DynamicList<int>();
             var elementForRemove = 2;
@@ -76,7 +76,7 @@
         }
 
         [TestMethod]
-        public void TestRemoveElementsOfListWhenListIsEmptyOrNotFound()
+        public void TestRemoveWhenListIsEmptyOrNotFound()
         {
             var dynamicList = new DynamicList<int>();
 
@@ -85,6 +85,23 @@
 
             // Assert
             Assert.IsTrue(removedElementIndex < 0);
+        }
+
+        [TestMethod]
+        public void TestIndexOf()
+        {
+            var dynamicList = new DynamicList<int>();
+            var elementForRemove = 2;
+            dynamicList.Add(0);
+            dynamicList.Add(elementForRemove);
+            dynamicList.Add(4);
+
+            // Act
+            var removedElementIndex = dynamicList.Remove(elementForRemove);
+
+            // Assert
+            Assert.AreEqual(dynamicList[1], 4, "Element for remove not removed.");
+            Assert.AreEqual(2, dynamicList.Count, "Dynamic list not remove element.");
         }
     }
 }
