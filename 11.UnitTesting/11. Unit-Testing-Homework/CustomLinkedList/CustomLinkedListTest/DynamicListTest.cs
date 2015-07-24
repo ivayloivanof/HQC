@@ -76,7 +76,7 @@
         }
 
         [TestMethod]
-        public void TestRemoveElementsOfListWhenListIsEmpty()
+        public void TestRemoveElementsOfListWhenListIsEmptyOrNotFound()
         {
             var dynamicList = new DynamicList<int>();
 
