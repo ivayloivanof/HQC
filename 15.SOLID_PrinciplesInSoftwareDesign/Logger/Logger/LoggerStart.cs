@@ -6,8 +6,9 @@
     {
         public static void Main()
         {
-
-            SimpleLayout simpleLayout = new SimpleLayout();
+            var simpleLayout = new SimpleLayout();
+            var consoleAppender = new ConsoleAppender();
+            var fileAppender = new FileAppender();
 
         }
     }
