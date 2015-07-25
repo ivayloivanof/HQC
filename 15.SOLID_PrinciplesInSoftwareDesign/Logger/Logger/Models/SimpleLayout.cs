@@ -6,9 +6,9 @@
 
     public class SimpleLayout : ILayout
     {
-        public void Layout(ReportLevel reportLevel, string message)
+        public string Layout(ReportLevel reportLevel, string message)
         {
-            var messages = string.Format("<{0}> - <{1}> - <{2}>", DateTime.Now, reportLevel.ToString(), message);
+            return string.Format("<{0}> - <{1}> - <{2}>", DateTime.Now, reportLevel.ToString(), message);
         }
     }
 }
