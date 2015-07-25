@@ -1,6 +1,6 @@
 ﻿namespace Logger.Models
 {
-    internal enum LayoutType
+    internal enum ReportLevel
     {
         Info,
         Warning,
