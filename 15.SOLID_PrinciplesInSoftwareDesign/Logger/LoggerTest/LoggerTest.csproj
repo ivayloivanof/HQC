@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>486feeb7-3eb9-4b25-8e34-8c1e949f541f</ProjectGuid>
+    <ProjectGuid>{65C90330-701E-4AFE-B41D-A4E5E38E22F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LoggerTest</RootNamespace>
@@ -50,8 +50,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="TestFileAppender.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestSimpleLayout.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{fcb9ae7a-cec9-4f31-b1c0-4109fc91fc8b}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

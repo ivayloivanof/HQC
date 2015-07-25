@@ -10,7 +10,6 @@
             var simpleLayout = new SimpleLayout();
             IAppender consoleAppender = new ConsoleAppender(simpleLayout);
             IAppender fileAppender = new FileAppender(simpleLayout);
-
         }
     }
 }
