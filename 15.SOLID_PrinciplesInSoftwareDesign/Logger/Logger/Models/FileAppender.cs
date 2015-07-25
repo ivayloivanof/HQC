@@ -1,6 +1,14 @@
 ﻿namespace Logger.Models
 {
-    public class FileAppender
+    using global::Logger.Interfaces;
+
+    public class FileAppender : IAppender
     {
+        public FileAppender(SimpleLayout simpleLayout)
+        {
+            this.SimpleLayout = simpleLayout;
+        }
+
+        public SimpleLayout SimpleLayout { get; set; }
     }
 }
