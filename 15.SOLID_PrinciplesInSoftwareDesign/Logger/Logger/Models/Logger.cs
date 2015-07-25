@@ -4,5 +4,6 @@
 
     public class Logger : ILogger
     {
+        private ReportLevel LayoutType { get; set; }
     }
 }
