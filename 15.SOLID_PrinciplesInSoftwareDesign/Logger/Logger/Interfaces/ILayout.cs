@@ -2,8 +2,8 @@
 {
     using Logger.Models;
 
-    internal interface ILayout
+    public interface ILayout
     {
-        void Layout(ReportLevel reportLevel, string message);
+        string Layout(ReportLevel reportLevel, string message);
     }
 }
