@@ -1,15 +1,16 @@
 ﻿namespace Logger.Models
 {
+    using System;
+
     using Interfaces;
 
     public class SimpleLayout : ILayout
     {
-        public ReportLevel LayoutType { get; set; }
+        private ReportLevel LayoutType { get; set; }
 
-        // SimpleLayout - defines the format "<date-time> - <report level> - <message>"
         public void Layout(ReportLevel reportLevel, string message)
         {
-            throw new System.NotImplementedException();
+            var messages = string.Format("<{0}> - <{1}> - <{2}>", DateTime.Now, reportLevel.ToString(), message);
         }
     }
 }
