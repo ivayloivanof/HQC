@@ -4,6 +4,8 @@
 
     using Logger.Interfaces;
     using Logger.Models;
+    using Logger.Models.Appenders;
+    using Logger.Models.Layouts;
 
     public class LoggerStart
     {
@@ -12,11 +14,18 @@
             try
             {
                 var simpleLayout = new SimpleLayout();
+                var xmlLayout = new XmlLayout();
+
                 IAppender consoleAppender = new ConsoleAppender(simpleLayout);
                 IAppender fileAppender = new FileAppender(simpleLayout);
                 fileAppender.File = "../../log.txt";
-                ILogger logger = new Logger(consoleAppender, fileAppender);
 
+                IAppender fileAppenderXml = new FileAppender(xmlLayout);
+                fileAppenderXml.File = "../../log.xml";
+
+                ILogger logger = new Logger(consoleAppender, fileAppender, fileAppenderXml);
+
+                // add in logs
                 logger.Error("Error parsing JSON.");
                 logger.Info(string.Format("User {0} successfully registered.", "Pesho"));
                 logger.Warn("Warn - missing files.");

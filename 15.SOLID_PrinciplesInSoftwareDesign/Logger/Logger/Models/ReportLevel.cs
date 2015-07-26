@@ -3,7 +3,7 @@
     public enum ReportLevel
     {
         Info,
-        Warning,
+        Warn,
         Error,
         Critical,
         Fatal

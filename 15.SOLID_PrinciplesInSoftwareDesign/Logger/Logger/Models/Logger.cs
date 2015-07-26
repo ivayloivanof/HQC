@@ -79,10 +79,10 @@
             this.InsertInLog();
         }
 
-        public void Warn(string messageWarning)
+        public void Warn(string messageWarn)
         {
-            this.ReportLevel = ReportLevel.Warning;
-            this.Message = messageWarning;
+            this.ReportLevel = ReportLevel.Warn;
+            this.Message = messageWarn;
             this.InsertInLog();
         }
 
