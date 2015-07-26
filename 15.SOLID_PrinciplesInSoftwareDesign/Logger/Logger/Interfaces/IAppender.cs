@@ -1,8 +1,8 @@
 ﻿namespace Logger.Interfaces
 {
-    using Logger.Models;
+    using Models;
 
-    internal interface IAppender
+    public interface IAppender
     {
         SimpleLayout SimpleLayout { get; set; }
     }
