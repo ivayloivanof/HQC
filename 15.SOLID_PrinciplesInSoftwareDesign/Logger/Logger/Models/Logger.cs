@@ -1,10 +1,19 @@
 ﻿namespace Logger.Models
 {
+    using System.Collections.Generic;
+
     using Interfaces;
 
     public class Logger : ILogger
     {
+        public Logger(IAppender appender, IAppender appenderTwo = null)
+        {
+            this.Appenders.Add(appender);
+        }
+
         private ReportLevel ReportLevel { get; set; }
+
+        private IList<IAppender> Appenders { get; set; }
 
         public void Info(string message)
         {
