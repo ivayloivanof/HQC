@@ -50,9 +50,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TestFileAppender.cs" />
+    <Compile Include="TestAppenders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestSimpleLayout.cs" />
+    <Compile Include="TestLayouts.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Logger\Logger.csproj">
