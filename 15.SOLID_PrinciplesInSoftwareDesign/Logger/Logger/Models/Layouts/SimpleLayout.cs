@@ -1,4 +1,4 @@
-﻿namespace Logger.Models
+﻿namespace Logger.Models.Layouts
 {
     using System;
 

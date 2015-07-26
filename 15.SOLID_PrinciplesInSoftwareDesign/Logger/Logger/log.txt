@@ -1,0 +1,20 @@
+26.7.2015 г. 23:30:30 - Error - Error parsing JSON.
+26.7.2015 г. 23:30:30 - Info - User Pesho successfully registered.
+26.7.2015 г. 23:30:30 - Warn - Warn - missing files.
+26.7.2015 г. 23:30:30 - Fatal - mscorlib.dll does not respond
+26.7.2015 г. 23:30:30 - Critical - No connection string found in App.config
+26.7.2015 г. 23:30:30 - Info - Everything seems fine
+26.7.2015 г. 23:30:30 - Warn - Warning: ping is too high - disconnect imminent
+26.7.2015 г. 23:30:30 - Error - Error parsing request
+26.7.2015 г. 23:30:30 - Critical - No connection string found in App.config
+26.7.2015 г. 23:30:30 - Fatal - mscorlib.dll does not respond
+26.7.2015 г. 23:33:12 - Error - Error parsing JSON.
+26.7.2015 г. 23:33:12 - Info - User Pesho successfully registered.
+26.7.2015 г. 23:33:12 - Warn - Warn - missing files.
+26.7.2015 г. 23:33:12 - Fatal - mscorlib.dll does not respond
+26.7.2015 г. 23:33:12 - Critical - No connection string found in App.config
+26.7.2015 г. 23:33:12 - Info - Everything seems fine
+26.7.2015 г. 23:33:12 - Warn - Warning: ping is too high - disconnect imminent
+26.7.2015 г. 23:33:12 - Error - Error parsing request
+26.7.2015 г. 23:33:12 - Critical - No connection string found in App.config
+26.7.2015 г. 23:33:12 - Fatal - mscorlib.dll does not respond

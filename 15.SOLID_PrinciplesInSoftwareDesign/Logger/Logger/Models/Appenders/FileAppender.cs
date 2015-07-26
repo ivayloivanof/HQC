@@ -1,22 +1,19 @@
-﻿namespace Logger.Models
+﻿namespace Logger.Models.Appenders
 {
     using System;
-
     using System.IO;
 
     using Interfaces;
 
-    public class FileAppender : IAppender
+    public class FileAppender : Appenders
     {
         private string file;
 
-        public FileAppender(SimpleLayout simpleLayout)
+        public FileAppender(ILayout layout)
         {
-            this.SimpleLayout = simpleLayout;
+            this.Layout = layout;
         }
-
-        public SimpleLayout SimpleLayout { get; set; }
-
+        
         public string File
         {
             get
@@ -35,10 +32,10 @@
             }
         }
 
-        public void Append(ReportLevel reportLevel, string message)
+        public override void Append(ReportLevel reportLevel, string message)
         {
-            var messageFormated = this.SimpleLayout.Layout(reportLevel, message);
-            using (StreamWriter writer = new StreamWriter(this.File, true))
+            var messageFormated = this.Layout.Layout(reportLevel, message);
+            using (var writer = new StreamWriter(this.File, true))
             {
                 writer.WriteLine(messageFormated);
             }

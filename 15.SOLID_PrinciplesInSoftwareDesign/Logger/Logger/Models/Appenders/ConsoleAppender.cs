@@ -1,17 +1,19 @@
-﻿namespace Logger.Models
+﻿namespace Logger.Models.Appenders
 {
     using System;
 
+    using Interfaces;
+
     public class ConsoleAppender : Appenders
     {
-        public ConsoleAppender(SimpleLayout simpleLayout)
+        public ConsoleAppender(ILayout layout)
         {
-            this.SimpleLayout = simpleLayout;
+            this.Layout = layout;
         }
 
         public override void Append(ReportLevel reportLevel, string message)
         {
-            var messageFormated = this.SimpleLayout.Layout(reportLevel, message);
+            var messageFormated = this.Layout.Layout(reportLevel, message);
             Console.WriteLine(messageFormated);
         }
     }
