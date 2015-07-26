@@ -2,6 +2,8 @@
 {
     using System;
 
+    using System.IO;
+
     using Interfaces;
 
     public class FileAppender : IAppender
@@ -32,6 +34,14 @@
                 this.file = value;
             }
         }
-        
+
+        public void Append(ReportLevel reportLevel, string message)
+        {
+            var messageFormated = this.SimpleLayout.Layout(reportLevel, message);
+            using (StreamWriter writer = new StreamWriter(this.File, true))
+            {
+                writer.WriteLine(messageFormated);
+            }
+        }
     }
 }
