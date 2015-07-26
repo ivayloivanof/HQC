@@ -1,6 +1,6 @@
 ﻿namespace Logger.Models
 {
-    using global::Logger.Interfaces;
+    using Interfaces;
 
     public class ConsoleAppender : IAppender
     {
@@ -10,5 +10,7 @@
         }
 
         public SimpleLayout SimpleLayout { get; set; }
+
+
     }
 }
