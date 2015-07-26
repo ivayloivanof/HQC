@@ -1,19 +1,49 @@
 ﻿namespace Logger.Models
 {
+    using System;
     using System.Collections.Generic;
 
     using Interfaces;
 
     public class Logger : ILogger
     {
-        public Logger(IAppender appender, IAppender appenderTwo = null)
+        private IList<IAppender> appenders;
+
+        public Logger(IAppender appender, IAppender appenderTwo, IAppender appenderThree)
         {
-            this.Appenders.Add(appender);
+            this.appenders = new List<IAppender>();
+            this.Appenders = appender;
+            this.Appenders = appenderTwo;
+            this.Appenders = appenderThree;
+        }
+
+        public Logger(IAppender appender, IAppender appenderTwo)
+        {
+            this.appenders = new List<IAppender>();
+            this.Appenders = appender;
+            this.Appenders = appenderTwo;
+        }
+
+        public Logger(IAppender appender)
+        {
+            this.appenders = new List<IAppender>();
+            this.Appenders = appender;
         }
 
         private ReportLevel ReportLevel { get; set; }
 
-        private IList<IAppender> Appenders { get; set; }
+        private IAppender Appenders 
+        {
+            set
+            {
+                if (value == null)
+                {
+                    throw new ArgumentException("This appender is not valid.");
+                }
+
+                this.appenders.Add(value);
+            }
+        }
 
         public void Info(string message)
         {
