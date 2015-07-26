@@ -22,6 +22,12 @@
                 logger.Warn("Warn - missing files.");
                 logger.Fatal("mscorlib.dll does not respond");
                 logger.Critical("No connection string found in App.config");
+
+                logger.Info("Everything seems fine");
+                logger.Warn("Warning: ping is too high - disconnect imminent");
+                logger.Error("Error parsing request");
+                logger.Critical("No connection string found in App.config");
+                logger.Fatal("mscorlib.dll does not respond");
             }
             catch (ArgumentException ex)
             {
