@@ -4,7 +4,7 @@
 
     public interface IAppender
     {
-        SimpleLayout SimpleLayout { get; set; }
+        ILayout Layout { get; set; }
 
         string File { get; set; }
 
