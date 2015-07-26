@@ -6,7 +6,7 @@
 
         void Error(string message);
 
-        void Warning(string message);
+        void Warn(string message);
 
         void Critical(string message);
 
