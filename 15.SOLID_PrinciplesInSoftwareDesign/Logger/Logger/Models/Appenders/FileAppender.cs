@@ -14,7 +14,7 @@
             this.Layout = layout;
         }
         
-        public string File
+        public override string File
         {
             get
             {
