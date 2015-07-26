@@ -2,8 +2,6 @@
 {
     using Interfaces;
 
-    using Models.Layouts;
-
     public abstract class Appenders : IAppender
     {
         public ILayout Layout { get; set; }
