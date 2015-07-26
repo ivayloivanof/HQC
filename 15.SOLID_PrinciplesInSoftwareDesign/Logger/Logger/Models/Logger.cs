@@ -9,6 +9,8 @@
     {
         private IList<IAppender> appenders;
 
+        private string messages;
+
         public Logger(IAppender appender, IAppender appenderTwo, IAppender appenderThree)
         {
             this.appenders = new List<IAppender>();
@@ -45,29 +47,65 @@
             }
         }
 
+        private string Messages
+        {
+            get
+            {
+                return this.messages;
+            }
+
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    throw new ArgumentException("This is empty message.");
+                }
+
+                this.messages = value.Trim();
+            }
+        }
+                    
         public void Info(string message)
         {
             this.ReportLevel = ReportLevel.Info;
+            this.Messages = message;
+            this.InsertInLog();
         }
 
         public void Error(string message)
         {
             this.ReportLevel = ReportLevel.Error;
+            this.Messages = message;
+            this.InsertInLog();
         }
 
         public void Warning(string message)
         {
             this.ReportLevel = ReportLevel.Warning;
+            this.Messages = message;
+            this.InsertInLog();
         }
 
         public void Critical(string message)
         {
             this.ReportLevel = ReportLevel.Critical;
+            this.Messages = message;
+            this.InsertInLog();
         }
 
         public void Fatal(string message)
         {
             this.ReportLevel = ReportLevel.Fatal;
+            this.Messages = message;
+            this.InsertInLog();
+        }
+               
+        private void InsertInLog()
+        {
+            for (var appender = 0; appender < this.appenders.Count; appender++)
+            {
+                this.appenders[appender].SimpleLayout.Layout(this.ReportLevel, this.Messages);
+            }
         }
     }
 }
