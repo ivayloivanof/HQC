@@ -79,7 +79,7 @@
             this.InsertInLog();
         }
 
-        public void Warning(string messageWarning)
+        public void Warn(string messageWarning)
         {
             this.ReportLevel = ReportLevel.Warning;
             this.Message = messageWarning;
@@ -102,9 +102,9 @@
                
         private void InsertInLog()
         {
-            foreach (IAppender appender in this.appenders)
+            foreach (var appender in this.appenders)
             {
-                var a = appender.SimpleLayout.Layout(this.ReportLevel, this.Message);
+                appender.Append(this.ReportLevel, this.Message);
             }
         }
     }

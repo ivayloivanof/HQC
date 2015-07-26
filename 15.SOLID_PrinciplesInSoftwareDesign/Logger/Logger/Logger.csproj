@@ -45,6 +45,7 @@
     <Compile Include="Interfaces\ILayout.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="LoggerStart.cs" />
+    <Compile Include="Models\Appenders.cs" />
     <Compile Include="Models\ConsoleAppender.cs" />
     <Compile Include="Models\FileAppender.cs" />
     <Compile Include="Models\Logger.cs" />
