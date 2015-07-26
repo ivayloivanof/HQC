@@ -65,38 +65,38 @@
             }
         }
                     
-        public void Info(string message)
+        public void Info(string messageInfo)
         {
             this.ReportLevel = ReportLevel.Info;
-            this.Message = message;
+            this.Message = messageInfo;
             this.InsertInLog();
         }
 
-        public void Error(string message)
+        public void Error(string messageError)
         {
             this.ReportLevel = ReportLevel.Error;
-            this.Message = message;
+            this.Message = messageError;
             this.InsertInLog();
         }
 
-        public void Warning(string message)
+        public void Warning(string messageWarning)
         {
             this.ReportLevel = ReportLevel.Warning;
-            this.Message = message;
+            this.Message = messageWarning;
             this.InsertInLog();
         }
 
-        public void Critical(string message)
+        public void Critical(string messageCritical)
         {
             this.ReportLevel = ReportLevel.Critical;
-            this.Message = message;
+            this.Message = messageCritical;
             this.InsertInLog();
         }
 
-        public void Fatal(string message)
+        public void Fatal(string messageFatal)
         {
             this.ReportLevel = ReportLevel.Fatal;
-            this.Message = message;
+            this.Message = messageFatal;
             this.InsertInLog();
         }
                
