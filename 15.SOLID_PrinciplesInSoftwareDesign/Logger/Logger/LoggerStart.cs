@@ -6,6 +6,7 @@
     using Logger.Models;
     using Logger.Models.Appenders;
     using Logger.Models.Layouts;
+    using System.Collections.Generic;
 
     public class LoggerStart
     {
@@ -24,7 +25,7 @@
                 fileAppenderXml.File = "../../log.xml";
 
                 ILogger logger = new Logger(consoleAppender, fileAppender, fileAppenderXml);
-
+                
                 // add in logs
                 logger.Error("Error parsing JSON.");
                 logger.Info(string.Format("User {0} successfully registered.", "Pesho"));
