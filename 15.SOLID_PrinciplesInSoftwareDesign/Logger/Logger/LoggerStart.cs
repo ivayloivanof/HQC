@@ -6,7 +6,6 @@
     using Logger.Models;
     using Logger.Models.Appenders;
     using Logger.Models.Layouts;
-    using System.Collections.Generic;
 
     public class LoggerStart
     {
