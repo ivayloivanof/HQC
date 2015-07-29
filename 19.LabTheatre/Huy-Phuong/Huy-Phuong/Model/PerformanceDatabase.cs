@@ -2,11 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     using global::Theatre.Exception;
     using global::Theatre.Interface;
 
-    internal class BuổIDiễNDatabase : IPerformanceDatabase
+    internal class PerformanceDatabase : IPerformanceDatabase
     {
         private readonly SortedDictionary<string, SortedSet<Entertainment>> sortedDictionary =
             new SortedDictionary<string, SortedSet<Entertainment>>();
@@ -36,8 +37,8 @@
 
             var sortedTheatres = this.sortedDictionary[theatreName];
 
-            var e2 = startDateTime + duration;
-            if (kiemTra(sortedTheatres, startDateTime, e2))
+            var endDateTime = startDateTime + duration;
+            if (DurationOverlap(sortedTheatres, startDateTime, endDateTime))
             {
                 throw new TimeDurationOverlapException("Time/duration overlap");
             }
@@ -49,15 +50,14 @@
         public IEnumerable<Entertainment> ListAllPerformances()
         {
             var theaters = this.sortedDictionary.Keys;
-            var result2 = new List<Entertainment>();
+            var resultAllPerformances = new List<Entertainment>();
 
-            foreach (var t in theaters)
+            foreach (var performances in theaters.Select(t => this.sortedDictionary[t]))
             {
-                var performances = this.sortedDictionary[t];
-                result2.AddRange(performances);
+                resultAllPerformances.AddRange(performances);
             }
 
-            return result2;
+            return resultAllPerformances;
         }
 
         IEnumerable<Entertainment> IPerformanceDatabase.ListPerformances(string theatreName)
@@ -67,22 +67,30 @@
                 throw new TheatreNotFoundException("Theatre does not exist");
             }
 
-            var asfd = this.sortedDictionary[theatreName];
-            return asfd;
+            var sortedTheatres = this.sortedDictionary[theatreName];
+            return sortedTheatres;
         }
 
-        protected internal static bool kiemTra(IEnumerable<Entertainment> performances, DateTime ss2, DateTime ee2)
+        protected internal static bool DurationOverlap(
+            IEnumerable<Entertainment> performances, 
+            DateTime startDateTime1, 
+            DateTime endDateTime1)
         {
             foreach (var p in performances)
             {
-                var ss = p.s2;
-                var ee = p.s2 + p.ThoiGian;
-                var kiemTra = (ss <= ss2 && ss2 <= ee) ||
-                                (ss <= ee2 && ee2 <= ee) ||
-                                (ss2 <= ss && ss <= ee2) ||
-                                (ss2 <= ee && ee <= ee2);
+                var startDateTime = p.StartDateTime;
+                var endDateTime = p.StartDateTime + p.Duration;
 
-                if (kiemTra)
+                var a = startDateTime <= startDateTime1;
+                var b = startDateTime1 <= endDateTime;
+                var c = startDateTime <= endDateTime1;
+                var d = endDateTime1 <= endDateTime;
+                var e = startDateTime1 <= startDateTime;
+                var j = startDateTime <= endDateTime1;
+                var k = startDateTime1 <= endDateTime;
+                var l = endDateTime <= endDateTime1;
+                
+                if ((a && b) || (c && d) || (e && j) || (k && l))
                 {
                     return true;
                 }
