@@ -10,7 +10,7 @@
 
     internal class Theatre
     {
-        public static IPerformanceDatabase universal = new BuổIDiễNDatabase();
+        public static IPerformanceDatabase universal = new PerformanceDatabase();
 
         public static void Main()
         {
@@ -61,8 +61,8 @@
                             var theaderName = parameters[0];
                             var performances = Theatre.universal.ListPerformances(theaderName).Select(p =>
                                 {
-                                    var result1 = p.s2.ToString("dd.MM.yyyy HH:mm");
-                                    return String.Format("({0}, {1})", p.tr32, result1);
+                                    var result1 = p.StartDateTime.ToString("dd.MM.yyyy HH:mm");
+                                    return String.Format("({0}, {1})", p.PerformanceTitle, result1);
                                 }).ToList();
 
                             resultInfo = performances.Any() ? String.Join(", ", performances) : "No performances";
