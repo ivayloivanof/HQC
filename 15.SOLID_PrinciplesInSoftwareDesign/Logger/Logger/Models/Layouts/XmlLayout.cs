@@ -7,27 +7,27 @@
 
     public class XmlLayout : ILayout
     {
-        private StringBuilder sb = new StringBuilder();
+        private StringBuilder stringBuilder = new StringBuilder();
 
         public string Layout(ReportLevel reportLevel, string message)
         {
-            this.sb.AppendLine("<log>");
+            this.stringBuilder.AppendLine("<log>");
 
-            this.sb.Append("\t<date>");
-            this.sb.Append(string.Format("{0}", DateTime.Now));
-            this.sb.AppendLine("</date>");
+            this.stringBuilder.Append("\t<date>");
+            this.stringBuilder.Append(string.Format("{0}", DateTime.Now));
+            this.stringBuilder.AppendLine("</date>");
 
-            this.sb.Append("\t<level>");
-            this.sb.Append(string.Format("{0}", reportLevel.ToString()));
-            this.sb.AppendLine("</level>");
+            this.stringBuilder.Append("\t<level>");
+            this.stringBuilder.Append(string.Format("{0}", reportLevel.ToString()));
+            this.stringBuilder.AppendLine("</level>");
 
-            this.sb.Append("\t<message>");
-            this.sb.Append(string.Format("{0}", message));
-            this.sb.AppendLine("</message>");
+            this.stringBuilder.Append("\t<message>");
+            this.stringBuilder.Append(string.Format("{0}", message));
+            this.stringBuilder.AppendLine("</message>");
 
-            this.sb.AppendLine("</log>");
+            this.stringBuilder.AppendLine("</log>");
 
-            return this.sb.ToString();
+            return this.stringBuilder.ToString();
         }
     }
 }
