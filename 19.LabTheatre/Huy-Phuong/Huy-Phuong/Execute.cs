@@ -54,8 +54,8 @@
                     stringBuilder.Append(", ");
                 }
 
-                var result1 = performances[i].s2.ToString("dd.MM.yyyy HH:mm");
-                stringBuilder.AppendFormat("({0}, {1}, {2})", performances[i].tr32, performances[i].tr23, result1);
+                var result1 = performances[i].StartDateTime.ToString("dd.MM.yyyy HH:mm");
+                stringBuilder.AppendFormat("({0}, {1}, {2})", performances[i].PerformanceTitle, performances[i].TheatreName, result1);
 
                 result = stringBuilder.ToString();
             }
