@@ -42,6 +42,10 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Class2.cs" />
+    <Compile Include="Exception\DuplicateTheatreException.cs" />
+    <Compile Include="Exception\TimeDurationOverlapException.cs" />
+    <Compile Include="Interface\IPerformanceDatabase.cs" />
+    <Compile Include="Exception\TheatreNotFoundException.cs" />
     <Compile Include="NhaHat.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -5,6 +5,7 @@
     using System.Globalization;
     using System.Linq;
 
+    using Theater.Exception;
     using Theater.Interface;
 
     internal partial class NhaHat
@@ -135,19 +136,8 @@
         }
     }
 
-
-
-    public class TimeDurationOverlapException : System.Exception
-    {
-        public TimeDurationOverlapException(string msg)
-            : base(msg) { }
-    }
     public class BuoiDien : IComparable<BuoiDien>
     {
-
-
-
-
         public BuoiDien(string tr23, string tr32, DateTime s2, TimeSpan thoiGian, decimal gia)
         {
             this.tr23 = tr23;
@@ -188,66 +178,52 @@ this.s2.ToString("dd.MM.yyyy HH:mm"), this.ThoiGian.ToString("hh':'mm"), this.gi
 
     internal class BuổIDiễNDatabase : IPerformanceDatabase
     {
-        private readonly SortedDictionary<string, SortedSet<BuoiDien>> sortedDictionaryStringSortedSetPerformance =
-        new SortedDictionary<string, SortedSet<BuoiDien>>();
+        private readonly SortedDictionary<string, SortedSet<BuoiDien>> sortedDictionary = 
+            new SortedDictionary<string, SortedSet<BuoiDien>>();
 
-        public void AddTheatre(string tt)
+        public void AddTheatre(string theatreName)
         {
-            if (!this.sortedDictionaryStringSortedSetPerformance.ContainsKey(tt))
+            if (!this.sortedDictionary.ContainsKey(theatreName))
             {
-                throw new DuplicateTheatreException("Duplicate theatre");
+                throw new DuplicateTheatreException("Duplicate theater");
             }
 
-            this.sortedDictionaryStringSortedSetPerformance[tt] = new SortedSet<BuoiDien>();
+            this.sortedDictionary[theatreName] = new SortedSet<BuoiDien>();
         }
-
-
-
-
-        class DuplicateTheatreException : System.Exception
-        {
-            public DuplicateTheatreException(string msg)
-                : base(msg)
-            {
-            }
-        }
-
-
+        
         public IEnumerable<string> ListTheatres()
         {
-            var t2 = this.sortedDictionaryStringSortedSetPerformance.Keys;
+            var t2 = this.sortedDictionary.Keys;
             return t2;
         }
 
-        void IPerformanceDatabase.AddPerformance(string tt,
-            string pp, DateTime s2, TimeSpan thoiGian, decimal gia)
+        void IPerformanceDatabase.AddPerformance(string theatreName, string performanceTitle, DateTime startDateTime, TimeSpan duration, decimal price)
         {
-            if (!this.sortedDictionaryStringSortedSetPerformance.ContainsKey(tt))
+            if (!this.sortedDictionary.ContainsKey(theatreName))
             {
-                throw new TheatreNotFoundException("Theatre does not exist");
+                throw new TheatreNotFoundException("Theater does not exist");
             }
 
-            var ps = this.sortedDictionaryStringSortedSetPerformance[tt];
-
-
-
-            var e2 = s2 + thoiGian; if (kiemTra(ps, s2, e2))
+            var ps = this.sortedDictionary[theatreName];
+            
+            var e2 = startDateTime + duration; 
+            if (kiemTra(ps, startDateTime, e2))
             {
                 throw new TimeDurationOverlapException("Time/duration overlap");
             }
 
-            var p = new BuoiDien(tt, pp, s2, thoiGian, gia); ps.Add(p);
+            var p = new BuoiDien(theatreName, performanceTitle, startDateTime, duration, price); 
+            ps.Add(p);
         }
 
         public IEnumerable<BuoiDien> ListAllPerformances()
         {
-            var theatres = this.sortedDictionaryStringSortedSetPerformance.Keys;
+            var theaters = this.sortedDictionary.Keys;
+            var result2 = new List<BuoiDien>(); 
 
-
-
-            var result2 = new List<BuoiDien>(); foreach (var t in theatres)
+            foreach (var t in theaters)
             {
-                var performances = this.sortedDictionaryStringSortedSetPerformance[t];
+                var performances = this.sortedDictionary[t];
                 result2.AddRange(performances);
             }
 
@@ -256,44 +232,27 @@ this.s2.ToString("dd.MM.yyyy HH:mm"), this.ThoiGian.ToString("hh':'mm"), this.gi
 
         IEnumerable<BuoiDien> IPerformanceDatabase.ListPerformances(string theatreName)
         {
-            if (!this.sortedDictionaryStringSortedSetPerformance.ContainsKey(theatreName))
+            if (!this.sortedDictionary.ContainsKey(theatreName))
             {
                 throw new TheatreNotFoundException("Theatre does not exist");
-            } var asfd = this.sortedDictionaryStringSortedSetPerformance[theatreName];
+            } var asfd = this.sortedDictionary[theatreName];
             return asfd;
         }
 
 
 
-        protected internal static bool kiemTra(
-            IEnumerable
-
-                <
-
-            BuoiDien
-
-            >
-
-            performances
-
-            ,
-
-                DateTime
-
-            ss2
-
-
-            , DateTime ee2)
+        protected internal static bool kiemTra(IEnumerable<BuoiDien> performances, DateTime ss2, DateTime ee2)
         {
             foreach (var p in performances)
             {
                 var ss = p.s2;
-
-                var ee = p.s2 + p.ThoiGian; var kiemTra =
-                     (ss <= ss2 && ss2 <= ee) || (ss <= ee2 && ee2 <=
-
-
-                     ee) || (ss2 <= ss && ss <= ee2) || (ss2 <= ee && ee <= ee2); if (kiemTra)
+                var ee = p.s2 + p.ThoiGian; 
+                var kiemTra = (ss <= ss2 && ss2 <= ee) || 
+                                (ss <= ee2 && ee2 <= ee) || 
+                                (ss2 <= ss && ss <= ee2) || 
+                                (ss2 <= ee && ee <= ee2);
+                
+                if (kiemTra)
                 {
                     return true;
                 }
@@ -302,5 +261,4 @@ this.s2.ToString("dd.MM.yyyy HH:mm"), this.ThoiGian.ToString("hh':'mm"), this.gi
             return false;
         }
     }
-
 }
