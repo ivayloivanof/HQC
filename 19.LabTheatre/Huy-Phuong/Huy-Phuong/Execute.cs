@@ -4,8 +4,16 @@
     using System.Linq;
     using System.Text;
 
+    /// <summary>
+    /// Execute
+    /// </summary>
     public static class Execute
     {
+        /// <summary>
+        /// ExecuteAddTheatreCommand
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public static string ExecuteAddTheatreCommand(string[] parameters)
         {
             var theatreName = parameters[0];
@@ -14,6 +22,10 @@
             return "Theatre added";
         }
 
+        /// <summary>
+        /// ExecutePrintAllTheatresCommand
+        /// </summary>
+        /// <returns></returns>
         public static string ExecutePrintAllTheatresCommand()
         {
             var theatresCount = Theatre.universal.ListTheatres().Count();
@@ -35,6 +47,10 @@
             return "No theatres";
         }
 
+        /// <summary>
+        /// ExecutePrintAllPerformancesCommand
+        /// </summary>
+        /// <returns></returns>
         public static string ExecutePrintAllPerformancesCommand()
         {
             var performances = Theatre.universal.ListAllPerformances().ToList();
