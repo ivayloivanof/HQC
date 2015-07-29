@@ -1,9 +1,9 @@
-﻿namespace Theater.Interface
+﻿namespace Theatre.Interface
 {
     using System;
     using System.Collections.Generic;
 
-    using Theater.Model;
+    using global::Theatre.Model;
 
     // Do not modify the interface members
     // Moving the interface to separate namespace is allowed

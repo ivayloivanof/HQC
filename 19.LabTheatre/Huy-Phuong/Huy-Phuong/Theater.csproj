@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{94F3D43F-0B18-46B3-9017-7D3B247756F1}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Theater</RootNamespace>
+    <RootNamespace>Theatre</RootNamespace>
     <AssemblyName>Theatre</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,15 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Class2.cs" />
+    <Compile Include="Execute.cs" />
     <Compile Include="Exception\DuplicateTheatreException.cs" />
     <Compile Include="Exception\TimeDurationOverlapException.cs" />
     <Compile Include="Interface\IPerformanceDatabase.cs" />
     <Compile Include="Exception\TheatreNotFoundException.cs" />
     <Compile Include="Model\Entertainment.cs" />
     <Compile Include="Model\BuổIDiễNDatabase.cs" />
-    <Compile Include="NhaHat.cs" />
+    <Compile Include="Theatre.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

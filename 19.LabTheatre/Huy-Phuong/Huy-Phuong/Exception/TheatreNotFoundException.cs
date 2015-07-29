@@ -1,4 +1,4 @@
-﻿namespace Theater.Exception
+﻿namespace Theatre.Exception
 {
     using System;
 

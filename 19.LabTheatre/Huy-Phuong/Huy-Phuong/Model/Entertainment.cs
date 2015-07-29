@@ -1,4 +1,4 @@
-﻿namespace Theater.Model
+﻿namespace Theatre.Model
 {
     using System;
 
@@ -30,7 +30,7 @@
 
         public override string ToString()
         {
-            var result = string.Format(
+            var result = String.Format(
                 "Entertainment(Tr32: {0}; Tr23: {1}; s2: {2}, ThoiGian: {3}, Gia: {4})",
                 this.tr23,
                 this.tr32,

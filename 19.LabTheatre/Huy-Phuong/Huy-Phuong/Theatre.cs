@@ -1,28 +1,33 @@
-﻿namespace Theater
+﻿namespace Theatre
 {
     using System;
     using System.Globalization;
     using System.Linq;
     using System.Threading;
 
-    using Theater.Exception;
-    using Theater.Interface;
-    using Theater.Model;
+    using global::Theatre.Exception;
+    using global::Theatre.Interface;
+    using global::Theatre.Model;
 
-    internal partial class NhaHat
+    internal class Theatre
     {
         public static IPerformanceDatabase universal = new BuổIDiễNDatabase();
 
         public static void Main()
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
-
+            int loop = 0;
             while (true)
             {
                 var line = Console.ReadLine();
                 if (string.IsNullOrEmpty(line))
                 {
-                    return;
+                    loop++;
+                    if (loop > 11)
+                    {
+                        break;
+                    }
+
+                    continue;
                 }
 
                 string[] lineArrayCommandAndSymbols = line.Split('(');
@@ -36,10 +41,10 @@
                     switch (command)
                     {
                         case "AddTheatre":
-                            resultInfo = Class1.ExecuteAddTheatreCommand(parameters);
+                            resultInfo = Execute.ExecuteAddTheatreCommand(parameters);
                             break;
                         case "PrintAllTheatres":
-                            resultInfo = Class1.ExecutePrintAllTheatresCommand();
+                            resultInfo = Execute.ExecutePrintAllTheatresCommand();
                             break;
                         case "AddPerformance":
                             var theatreName = parameters[0];
@@ -47,21 +52,21 @@
                             DateTime startDateTime = DateTime.ParseExact(parameters[2], "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
                             TimeSpan duration = TimeSpan.Parse(parameters[3]);
                             var price = decimal.Parse(parameters[4]);
-                            NhaHat.universal.AddPerformance(theatreName, performanceTitle, startDateTime, duration, price);
+                            Theatre.universal.AddPerformance(theatreName, performanceTitle, startDateTime, duration, price);
                             resultInfo = "Performance added";
                             break;
                         case "PrintAllPerformances":
-                            resultInfo = ExecutePrintAllPerformancesCommand();
+                            resultInfo = Execute.ExecutePrintAllPerformancesCommand();
                             break;
                         case "PrintPerformances":
                             var theaderName = parameters[0];
                             var performances = universal.ListPerformances(theaderName).Select(p =>
                                 {
                                     var result1 = p.s2.ToString("dd.MM.yyyy HH:mm");
-                                    return string.Format("({0}, {1})", p.tr32, result1);
+                                    return String.Format("({0}, {1})", p.tr32, result1);
                                 }).ToList();
 
-                            resultInfo = performances.Any() ? string.Join(", ", performances) : "No performances";
+                            resultInfo = performances.Any() ? String.Join(", ", performances) : "No performances";
 
                             break;
                         default: 

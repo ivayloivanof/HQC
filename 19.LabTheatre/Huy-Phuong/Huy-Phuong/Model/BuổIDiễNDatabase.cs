@@ -1,10 +1,10 @@
-﻿namespace Theater.Model
+﻿namespace Theatre.Model
 {
     using System;
     using System.Collections.Generic;
 
-    using Theater.Exception;
-    using Theater.Interface;
+    using global::Theatre.Exception;
+    using global::Theatre.Interface;
 
     internal class BuổIDiễNDatabase : IPerformanceDatabase
     {
