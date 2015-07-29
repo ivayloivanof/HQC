@@ -2,41 +2,65 @@
 {
     using System;
 
+    /// <summary>
+    /// Entertainment
+    /// </summary>
     public class Entertainment : IComparable<Entertainment>
     {
-        public Entertainment(string tr23, string tr32, DateTime s2, TimeSpan thoiGian, decimal gia)
+        /// <summary>
+        /// Entertainment constructor
+        /// </summary>
+        /// <param name="theatreName"></param>
+        /// <param name="performanceTitle"></param>
+        /// <param name="startDateTime"></param>
+        /// <param name="duration"></param>
+        /// <param name="price"></param>
+        public Entertainment(string theatreName, string performanceTitle, DateTime startDateTime, TimeSpan duration, decimal price)
         {
-            this.tr23 = tr23;
-            this.tr32 = tr32;
-            this.s2 = s2;
-            this.ThoiGian = thoiGian; this.gia = gia;
+            this.TheatreName = theatreName;
+            this.PerformanceTitle = performanceTitle;
+            this.StartDateTime = startDateTime;
+            this.Duration = duration;
+            this.Price = price;
         }
 
-        public string tr23 { get; protected internal set; }
+        /// <summary>
+        /// TheatreName
+        /// </summary>
+        public string TheatreName { get; protected internal set; }
         
-        public string tr32 { get; private set; }
+        /// <summary>
+        /// PerformanceTitle
+        /// </summary>
+        public string PerformanceTitle { get; private set; }
         
-        public DateTime s2 { get; set; }
+        /// <summary>
+        /// StartDateTime
+        /// </summary>
+        public DateTime StartDateTime { get; set; }
 
-        public TimeSpan ThoiGian { get; private set; }
+        /// <summary>
+        /// Duration
+        /// </summary>
+        public TimeSpan Duration { get; private set; }
 
-        protected internal decimal gia { get; protected set; }
+        protected internal decimal Price { get; protected set; }
 
         int IComparable<Entertainment>.CompareTo(Entertainment otherEntertainment)
         {
-            int buffer = this.s2.CompareTo(otherEntertainment.s2);
+            var buffer = this.StartDateTime.CompareTo(otherEntertainment.StartDateTime);
             return buffer;
         }
 
         public override string ToString()
         {
             var result = String.Format(
-                "Entertainment(Tr32: {0}; Tr23: {1}; s2: {2}, ThoiGian: {3}, Gia: {4})",
-                this.tr23,
-                this.tr32,
-                this.s2.ToString("dd.MM.yyyy HH:mm"),
-                this.ThoiGian.ToString("hh':'mm"),
-                this.gia.ToString("f2"));
+                "Entertainment(Tr32: {0}; Tr23: {1}; startDateTime: {2}, duration: {3}, Gia: {4})",
+                this.TheatreName,
+                this.PerformanceTitle,
+                this.StartDateTime.ToString("dd.MM.yyyy HH:mm"),
+                this.Duration.ToString("hh':'mm"),
+                this.Price.ToString("f2"));
 
             return result;
         }
