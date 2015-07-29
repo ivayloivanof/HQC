@@ -20,16 +20,13 @@
                     {
                         sb.Append(", ");
                     }
+
                     string result1 = performances[i].s2.ToString("dd.MM.yyyy HH:mm");
-                    sb.AppendFormat(
-        "({0}, {1}, {2})", performances
+                    sb.AppendFormat("({0}, {1}, {2})", performances[i].tr32, performances[i].tr23, result1);
 
-
-
-
-        [i].tr32, performances[i].tr23, result1);
-                    result = sb + "";
+                    result = sb.ToString();
                 }
+
                 return result;
             }
 

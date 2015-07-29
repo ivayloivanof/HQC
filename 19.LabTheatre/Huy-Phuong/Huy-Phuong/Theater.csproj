@@ -46,6 +46,8 @@
     <Compile Include="Exception\TimeDurationOverlapException.cs" />
     <Compile Include="Interface\IPerformanceDatabase.cs" />
     <Compile Include="Exception\TheatreNotFoundException.cs" />
+    <Compile Include="Model\BuoiDien.cs" />
+    <Compile Include="Model\BuổIDiễNDatabase.cs" />
     <Compile Include="NhaHat.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -3,6 +3,8 @@
     using System;
     using System.Collections.Generic;
 
+    using Theater.Model;
+
     // Do not modify the interface members
     // Moving the interface to separate namespace is allowed
     // Adding XML documentation is allowed

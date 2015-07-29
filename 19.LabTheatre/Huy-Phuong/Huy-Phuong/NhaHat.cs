@@ -1,12 +1,12 @@
 ﻿namespace Theater
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using System.Threading;
 
-    using Theater.Exception;
     using Theater.Interface;
+    using Theater.Model;
 
     internal partial class NhaHat
     {
@@ -14,251 +14,89 @@
 
         public static void Main()
         {
-            //Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("vi-VN");
 
             while (true)
             {
                 var line = Console.ReadLine();
-
                 if (string.IsNullOrEmpty(line))
                 {
                     return;
                 }
 
-                string[] chiHuyParts = line.Split('(');
-                string chiHuy = chiHuyParts[0];
-                string chiHuyResult;
+                string[] lineArrayCommandAndSymbols = line.Split('(');
+                string command = lineArrayCommandAndSymbols[0];
+                string resultInfo;
+                string[] chiHuyParts1;
+                string[] chiHuyParams;
                 try
                 {
-                    switch (chiHuy)
+                    switch (command)
                     {
-                        case "AddTheatre": chiHuyParts = line.Split('('); chiHuy = chiHuyParts[0]; string[] chiHuyParts1 = line.Split(
-
-
-                                            new[] { '(', ',', ')' }, StringSplitOptions.RemoveEmptyEntries); string[] chiHuyParams1 = chiHuyParts1.Skip
-
-
-
-
-                                                (1).Select(p =>
-                                                    p.Trim()).ToArray(); string
-                                                        [] chiHuyParams =
-
-
-                                                        chiHuyParams1;
-                            chiHuyResult = Class1.ExecuteAddTheatreCommand(chiHuyParams);
+                        case "AddTheatre":
+                            chiHuyParts1 = line.Split(
+                                new[] { '(', ',', ')' },
+                                StringSplitOptions.RemoveEmptyEntries);
+                            chiHuyParams = chiHuyParts1.Skip(1).Select(p => p.Trim()).ToArray();
+                            resultInfo = Class1.ExecuteAddTheatreCommand(chiHuyParams);
                             break;
                         case "PrintAllTheaters":
-                            chiHuyResult = Class1.ExecutePrintAllTheatresCommand(); break;
+                            resultInfo = Class1.ExecutePrintAllTheatresCommand();
+                            break;
                         case "AddPerformance":
-                            chiHuyParts = line.Split('(');
-
-
-
-
-                            chiHuy = chiHuyParts[0];
                             chiHuyParts1 = line.Split(new[] { '(', ',', ')' }, StringSplitOptions.RemoveEmptyEntries);
-                            chiHuyParams1 = chiHuyParts1.Skip(1).Select(p => p.Trim()).ToArray();
-
-
-                            chiHuyParams = chiHuyParams1;
-                            string theatreName = chiHuyParams[0]; string performanceTitle = chiHuyParams[1];
-                            DateTime result = DateTime.ParseExact(chiHuyParams[2], "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
-
-
-
-                            DateTime startDateTime = result; TimeSpan result2 = TimeSpan.Parse(chiHuyParams[3]);
+                            chiHuyParams = chiHuyParts1.Skip(1).Select(p => p.Trim()).ToArray();
+                            string theatreName = chiHuyParams[0];
+                            string performanceTitle = chiHuyParams[1];
+                            DateTime result = DateTime.ParseExact(
+                                chiHuyParams[2],
+                                "dd.MM.yyyy HH:mm",
+                                CultureInfo.InvariantCulture);
+                            DateTime startDateTime = result;
+                            TimeSpan result2 = TimeSpan.Parse(chiHuyParams[3]);
                             TimeSpan duration = result2;
                             decimal result3 = decimal.Parse(chiHuyParams[4], NumberStyles.Float);
                             decimal price = result3;
-
-
-
-
-
                             NhaHat.universal.AddPerformance(theatreName, performanceTitle, startDateTime, duration, price);
-                            chiHuyResult = "Performance added"; break;
+                            resultInfo = "Performance added";
+                            break;
                         case "PrintAllPerformances":
-                            chiHuyResult = ExecutePrintAllPerformancesCommand();
+                            resultInfo = ExecutePrintAllPerformancesCommand();
                             break;
                         case "PrintPerformances":
-                            chiHuyParts = line.Split('('); chiHuy = chiHuyParts[0];
-
-
-                            chiHuyParts1 = line.Split(
-                        new[] { '(', ',', ')' }, StringSplitOptions.RemoveEmptyEntries);
-                            chiHuyParams1 = chiHuyParts1.Skip(1).Select(p => p.Trim()).ToArray();
-
-
-                            chiHuyParams = chiHuyParams1;
-                            string theatre = chiHuyParams[0];
-
-
-
-
-
-                            var performances = universal.ListPerformances(theatre)
-                                .Select(p =>
+                            lineArrayCommandAndSymbols = line.Split('(');
+                            command = lineArrayCommandAndSymbols[0];
+                            chiHuyParts1 = line.Split(new[] { '(', ',', ')' }, StringSplitOptions.RemoveEmptyEntries);
+                            chiHuyParams = chiHuyParts1.Skip(1).Select(p => p.Trim()).ToArray();
+                            string theater = chiHuyParams[0];
+                            var performances = universal.ListPerformances(theater).Select(p =>
                                 {
                                     string result1 = p.s2.ToString("dd.MM.yyyy HH:mm");
                                     return string.Format("({0}, {1})", p.tr32, result1);
                                 })
-                    .ToList();
+                                .ToList();
                             if (performances.Any())
                             {
-                                chiHuyResult = string.Join(", ", performances);
+                                resultInfo = string.Join(", ", performances);
                             }
                             else
                             {
-                                chiHuyResult
+                                resultInfo = "No performances";
+                            }
 
-
-                                    =
-
-
-                                    "No performances"
-
-                                ;
-
-
-                            } break;
-                        default: chiHuyResult = "Invalid command!";
+                            break;
+                        default: 
+                            resultInfo = "Invalid command!";
                             break;
                     }
                 }
                 catch (System.Exception ex)
                 {
-                    chiHuyResult = "Error: " + ex.Message;
+                    resultInfo = "Error: " + ex.Message;
                 }
 
-                Console.WriteLine(chiHuyResult);
+                Console.WriteLine(resultInfo);
             }
-        }
-    }
-
-    public class BuoiDien : IComparable<BuoiDien>
-    {
-        public BuoiDien(string tr23, string tr32, DateTime s2, TimeSpan thoiGian, decimal gia)
-        {
-            this.tr23 = tr23;
-            this.tr32 = tr32;
-            this.s2 = s2;
-            this.ThoiGian = thoiGian; this.gia = gia;
-        }
-
-        public string tr23 { get; protected internal set; }public string tr32 { get; private set; }public DateTime s2 { get; set; }
-
-        public TimeSpan ThoiGian { get; private set; }
-
-
-
-
-        protected internal decimal gia { get; protected set; }
-
-        int IComparable<BuoiDien>.CompareTo(BuoiDien otherBuoiDien)
-        {
-            int tmp = this.s2.CompareTo(otherBuoiDien.s2); return tmp;
-        }
-
-
-
-
-
-        public override string ToString()
-        {
-            string result = string.Format(
-                "BuoiDien(Tr32: {0}; Tr23: {1}; s2: {2}, ThoiGian: {3}, Gia: {4})",
-this.tr23,
-this.tr32,
-this.s2.ToString("dd.MM.yyyy HH:mm"), this.ThoiGian.ToString("hh':'mm"), this.gia.ToString("f2"));
-            return result;
-        }
-    }
-
-
-    internal class BuổIDiễNDatabase : IPerformanceDatabase
-    {
-        private readonly SortedDictionary<string, SortedSet<BuoiDien>> sortedDictionary = 
-            new SortedDictionary<string, SortedSet<BuoiDien>>();
-
-        public void AddTheatre(string theatreName)
-        {
-            if (!this.sortedDictionary.ContainsKey(theatreName))
-            {
-                throw new DuplicateTheatreException("Duplicate theater");
-            }
-
-            this.sortedDictionary[theatreName] = new SortedSet<BuoiDien>();
-        }
-        
-        public IEnumerable<string> ListTheatres()
-        {
-            var t2 = this.sortedDictionary.Keys;
-            return t2;
-        }
-
-        void IPerformanceDatabase.AddPerformance(string theatreName, string performanceTitle, DateTime startDateTime, TimeSpan duration, decimal price)
-        {
-            if (!this.sortedDictionary.ContainsKey(theatreName))
-            {
-                throw new TheatreNotFoundException("Theater does not exist");
-            }
-
-            var ps = this.sortedDictionary[theatreName];
-            
-            var e2 = startDateTime + duration; 
-            if (kiemTra(ps, startDateTime, e2))
-            {
-                throw new TimeDurationOverlapException("Time/duration overlap");
-            }
-
-            var p = new BuoiDien(theatreName, performanceTitle, startDateTime, duration, price); 
-            ps.Add(p);
-        }
-
-        public IEnumerable<BuoiDien> ListAllPerformances()
-        {
-            var theaters = this.sortedDictionary.Keys;
-            var result2 = new List<BuoiDien>(); 
-
-            foreach (var t in theaters)
-            {
-                var performances = this.sortedDictionary[t];
-                result2.AddRange(performances);
-            }
-
-            return result2;
-        }
-
-        IEnumerable<BuoiDien> IPerformanceDatabase.ListPerformances(string theatreName)
-        {
-            if (!this.sortedDictionary.ContainsKey(theatreName))
-            {
-                throw new TheatreNotFoundException("Theatre does not exist");
-            } var asfd = this.sortedDictionary[theatreName];
-            return asfd;
-        }
-
-
-
-        protected internal static bool kiemTra(IEnumerable<BuoiDien> performances, DateTime ss2, DateTime ee2)
-        {
-            foreach (var p in performances)
-            {
-                var ss = p.s2;
-                var ee = p.s2 + p.ThoiGian; 
-                var kiemTra = (ss <= ss2 && ss2 <= ee) || 
-                                (ss <= ee2 && ee2 <= ee) || 
-                                (ss2 <= ss && ss <= ee2) || 
-                                (ss2 <= ee && ee <= ee2);
-                
-                if (kiemTra)
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }
