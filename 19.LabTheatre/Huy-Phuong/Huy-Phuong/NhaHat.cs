@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading;
 
+    using Theater.Exception;
     using Theater.Interface;
     using Theater.Model;
 
@@ -27,36 +28,25 @@
                 string[] lineArrayCommandAndSymbols = line.Split('(');
                 string command = lineArrayCommandAndSymbols[0];
                 string resultInfo;
-                string[] chiHuyParts1;
-                string[] chiHuyParams;
                 try
                 {
+                    var commands = line.Split(new[] { '(', ',', ')' }, StringSplitOptions.RemoveEmptyEntries);
+                    var parameters = commands.Skip(1).Select(p => p.Trim()).ToArray();
+
                     switch (command)
                     {
                         case "AddTheatre":
-                            chiHuyParts1 = line.Split(
-                                new[] { '(', ',', ')' },
-                                StringSplitOptions.RemoveEmptyEntries);
-                            chiHuyParams = chiHuyParts1.Skip(1).Select(p => p.Trim()).ToArray();
-                            resultInfo = Class1.ExecuteAddTheatreCommand(chiHuyParams);
+                            resultInfo = Class1.ExecuteAddTheatreCommand(parameters);
                             break;
-                        case "PrintAllTheaters":
+                        case "PrintAllTheatres":
                             resultInfo = Class1.ExecutePrintAllTheatresCommand();
                             break;
                         case "AddPerformance":
-                            chiHuyParts1 = line.Split(new[] { '(', ',', ')' }, StringSplitOptions.RemoveEmptyEntries);
-                            chiHuyParams = chiHuyParts1.Skip(1).Select(p => p.Trim()).ToArray();
-                            string theatreName = chiHuyParams[0];
-                            string performanceTitle = chiHuyParams[1];
-                            DateTime result = DateTime.ParseExact(
-                                chiHuyParams[2],
-                                "dd.MM.yyyy HH:mm",
-                                CultureInfo.InvariantCulture);
-                            DateTime startDateTime = result;
-                            TimeSpan result2 = TimeSpan.Parse(chiHuyParams[3]);
-                            TimeSpan duration = result2;
-                            decimal result3 = decimal.Parse(chiHuyParams[4], NumberStyles.Float);
-                            decimal price = result3;
+                            var theatreName = parameters[0];
+                            var performanceTitle = parameters[1];
+                            DateTime startDateTime = DateTime.ParseExact(parameters[2], "dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture);
+                            TimeSpan duration = TimeSpan.Parse(parameters[3]);
+                            var price = decimal.Parse(parameters[4]);
                             NhaHat.universal.AddPerformance(theatreName, performanceTitle, startDateTime, duration, price);
                             resultInfo = "Performance added";
                             break;
@@ -64,25 +54,14 @@
                             resultInfo = ExecutePrintAllPerformancesCommand();
                             break;
                         case "PrintPerformances":
-                            lineArrayCommandAndSymbols = line.Split('(');
-                            command = lineArrayCommandAndSymbols[0];
-                            chiHuyParts1 = line.Split(new[] { '(', ',', ')' }, StringSplitOptions.RemoveEmptyEntries);
-                            chiHuyParams = chiHuyParts1.Skip(1).Select(p => p.Trim()).ToArray();
-                            string theater = chiHuyParams[0];
-                            var performances = universal.ListPerformances(theater).Select(p =>
+                            var theaderName = parameters[0];
+                            var performances = universal.ListPerformances(theaderName).Select(p =>
                                 {
-                                    string result1 = p.s2.ToString("dd.MM.yyyy HH:mm");
+                                    var result1 = p.s2.ToString("dd.MM.yyyy HH:mm");
                                     return string.Format("({0}, {1})", p.tr32, result1);
-                                })
-                                .ToList();
-                            if (performances.Any())
-                            {
-                                resultInfo = string.Join(", ", performances);
-                            }
-                            else
-                            {
-                                resultInfo = "No performances";
-                            }
+                                }).ToList();
+
+                            resultInfo = performances.Any() ? string.Join(", ", performances) : "No performances";
 
                             break;
                         default: 
@@ -90,7 +69,19 @@
                             break;
                     }
                 }
-                catch (System.Exception ex)
+                catch (DuplicateTheatreException ex)
+                {
+                    resultInfo = "Error: " + ex.Message;
+                }
+                catch (TimeDurationOverlapException ex)
+                {
+                    resultInfo = "Error: " + ex.Message;
+                }
+                catch (TheatreNotFoundException ex)
+                {
+                    resultInfo = "Error: " + ex.Message;
+                }
+                catch (FormatException ex)
                 {
                     resultInfo = "Error: " + ex.Message;
                 }

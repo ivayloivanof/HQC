@@ -2,9 +2,9 @@
 {
     using System;
 
-    public class BuoiDien : IComparable<BuoiDien>
+    public class Entertainment : IComparable<Entertainment>
     {
-        public BuoiDien(string tr23, string tr32, DateTime s2, TimeSpan thoiGian, decimal gia)
+        public Entertainment(string tr23, string tr32, DateTime s2, TimeSpan thoiGian, decimal gia)
         {
             this.tr23 = tr23;
             this.tr32 = tr32;
@@ -22,16 +22,16 @@
 
         protected internal decimal gia { get; protected set; }
 
-        int IComparable<BuoiDien>.CompareTo(BuoiDien otherBuoiDien)
+        int IComparable<Entertainment>.CompareTo(Entertainment otherEntertainment)
         {
-            int buffer = this.s2.CompareTo(otherBuoiDien.s2);
+            int buffer = this.s2.CompareTo(otherEntertainment.s2);
             return buffer;
         }
 
         public override string ToString()
         {
             var result = string.Format(
-                "BuoiDien(Tr32: {0}; Tr23: {1}; s2: {2}, ThoiGian: {3}, Gia: {4})",
+                "Entertainment(Tr32: {0}; Tr23: {1}; s2: {2}, ThoiGian: {3}, Gia: {4})",
                 this.tr23,
                 this.tr32,
                 this.s2.ToString("dd.MM.yyyy HH:mm"),

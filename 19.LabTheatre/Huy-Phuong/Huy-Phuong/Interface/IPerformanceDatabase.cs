@@ -21,9 +21,9 @@
         void AddPerformance(string theatreName, string performanceTitle, DateTime startDateTime, TimeSpan duration, decimal price);
 
         // TODO: document this method, its parameters, return value, exceptions, etc.
-        IEnumerable<BuoiDien> ListAllPerformances();
+        IEnumerable<Entertainment> ListAllPerformances();
 
         // TODO: document this method, its parameters, return value, exceptions, etc.
-        IEnumerable<BuoiDien> ListPerformances(string theatreName);
+        IEnumerable<Entertainment> ListPerformances(string theatreName);
     }
 }
