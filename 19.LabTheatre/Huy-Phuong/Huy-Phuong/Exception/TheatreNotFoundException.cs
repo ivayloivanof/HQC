@@ -4,8 +4,8 @@
 
     internal class TheatreNotFoundException : Exception
     {
-        public TheatreNotFoundException(string msg)
-            : base(msg)
+        public TheatreNotFoundException(string message)
+            : base(message)
         {
         }
     }
