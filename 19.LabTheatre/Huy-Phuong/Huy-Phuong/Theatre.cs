@@ -3,7 +3,6 @@
     using System;
     using System.Globalization;
     using System.Linq;
-    using System.Threading;
 
     using global::Theatre.Exception;
     using global::Theatre.Interface;
@@ -60,7 +59,7 @@
                             break;
                         case "PrintPerformances":
                             var theaderName = parameters[0];
-                            var performances = universal.ListPerformances(theaderName).Select(p =>
+                            var performances = Theatre.universal.ListPerformances(theaderName).Select(p =>
                                 {
                                     var result1 = p.s2.ToString("dd.MM.yyyy HH:mm");
                                     return String.Format("({0}, {1})", p.tr32, result1);
