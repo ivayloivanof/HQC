@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Theatre.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,7 +47,7 @@
     <Compile Include="Interface\IPerformanceDatabase.cs" />
     <Compile Include="Exception\TheatreNotFoundException.cs" />
     <Compile Include="Model\Entertainment.cs" />
-    <Compile Include="Model\BuổIDiễNDatabase.cs" />
+    <Compile Include="Model\PerformanceDatabase.cs" />
     <Compile Include="Theatre.cs" />
   </ItemGroup>
   <ItemGroup />
