@@ -2,11 +2,11 @@
 {
     using System;
 
-    public class WalkInMatrix
+    public class WalkInMatrixStart
     {
         public static void Main()
         {
-            int number = 3;
+            var number = 3;
             int[,] matrix = new int[number, number];
             int k = 1, i = 0, j = 0, dx = 1, dy = 1;
 
