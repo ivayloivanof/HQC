@@ -28,15 +28,7 @@
                 k++;
             }
 
-            for (var row = 0; row < step; row++)
-            {
-                for (var col = 0; col < step; col++)
-                {
-                    Console.Write("{0,3}", matrix[row, col]);
-                }
-
-                Console.WriteLine();
-            }
+			PrintMatrix (matrix);
 
             ChangeMatrix.FindCell(matrix, out i, out j);
 
@@ -64,15 +56,18 @@
                 }
             }
 
-            for (var row = 0; row < step; row++)
-            {
-                for (var col = 0; col < step; col++)
-                {
-                    Console.Write("{0,3}", matrix[row, col]);
-                }
-
-                Console.WriteLine();
-            }
+			PrintMatrix(matrix);
         }
+
+		static void PrintMatrix (int[,] matrix)
+		{
+			for (var row = 0; row < matrix.GetLength(0); row++) {
+				for (var col = 0; col < matrix.GetLength(1); col++) {
+					Console.Write ("{0,3}", matrix [row, col]);
+				}
+
+				Console.WriteLine ();
+			}
+		}
     }
 }
