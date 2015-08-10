@@ -6,8 +6,8 @@
     {
         public static void Main()
         {
-            var number = 3;
-            int[,] matrix = new int[number, number];
+            var step = 3;
+            int[,] matrix = new int[step, step];
             int k = 1, i = 0, j = 0, dx = 1, dy = 1;
 
             while (true)
@@ -18,7 +18,7 @@
                     break;
                 }
 
-                while (i + dx >= number || i + dx < 0 || j + dy >= number || j + dy < 0 || matrix[i + dx, j + dy] != 0)
+                while (i + dx >= step || i + dx < 0 || j + dy >= step || j + dy < 0 || matrix[i + dx, j + dy] != 0)
                 {
                     ChangeMatrix.ChangeFieldOfMatrix(ref dx, ref dy);
                 }
@@ -28,15 +28,7 @@
                 k++;
             }
 
-            for (var row = 0; row < number; row++)
-            {
-                for (var col = 0; col < number; col++)
-                {
-                    Console.Write("{0,3}", matrix[row, col]);
-                }
-
-                Console.WriteLine();
-            }
+			PrintMatrix (matrix);
 
             ChangeMatrix.FindCell(matrix, out i, out j);
 
@@ -53,7 +45,7 @@
                         break;
                     }
 
-                    while (i + dx >= number || i + dx < 0 || j + dy >= number || j + dy < 0 || matrix[i + dx, j + dy] != 0)
+                    while (i + dx >= step || i + dx < 0 || j + dy >= step || j + dy < 0 || matrix[i + dx, j + dy] != 0)
                     {
                         ChangeMatrix.ChangeFieldOfMatrix(ref dx, ref dy);
                     }
@@ -64,20 +56,18 @@
                 }
             }
 
-            PrintMatrix(matrix);
+			PrintMatrix(matrix);
         }
 
-        private static void PrintMatrix(int[,] matrix)
-        {
-            for (var row = 0; row < matrix.GetLength(0); row++)
-            {
-                for (var col = 0; col < matrix.GetLength(1); col++)
-                {
-                    Console.Write("{0,3}", matrix[row, col]);
-                }
+		static void PrintMatrix (int[,] matrix)
+		{
+			for (var row = 0; row < matrix.GetLength(0); row++) {
+				for (var col = 0; col < matrix.GetLength(1); col++) {
+					Console.Write ("{0,3}", matrix [row, col]);
+				}
 
-                Console.WriteLine();
-            }
-        }
+				Console.WriteLine ();
+			}
+		}
     }
 }
