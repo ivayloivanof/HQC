@@ -1,6 +1,6 @@
 ﻿namespace ReaperInvasion.GameObjects
 {
-    using ReaperInvasion.Contracts;
+    using Contracts;
     using UI;
 
     public class Reaper : IRenderable
