@@ -43,6 +43,10 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Units\AmericanTankFactory.cs" />
+    <Compile Include="Units\GermanTankFactory.cs" />
+    <Compile Include="Units\RussianTankFactory.cs" />
+    <Compile Include="Units\TankFactory.cs" />
     <Compile Include="Units\Tank.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,6 @@
 ﻿namespace TankFactory.Units
 {
-    public class Tank
+    internal class Tank
     {
         public Tank(string model, double speed, int attackDamage)
         {
@@ -14,10 +14,5 @@
         public double Speed { get; set; }
 
         public int AttackDamage { get; set; }
-
-        public override string ToString()
-        {
-            return string.Format("-Tank\n...Model: {0}\n...Speed: {1:F2}\n...Damage: {2}", this.Model, this.Speed, this.AttackDamage);
-        }
     }
 }

@@ -4,15 +4,20 @@
 
     using Units;
 
-    public class Program
+    internal class Program
     {
         public static void Main()
         {
-            var tiger = new Tank("Tiger", 4.5, 120);
-            var t34 = new Tank("T 34", 3.3, 75);
-            var m1Abrams = new Tank("M1 Abrams", 5.4, 120);
-
+            TankFactory tiger = new GermanTankFactory();
+            tiger.CreateTank();
+            TankFactory t34 = new RussianTankFactory();
+            t34.CreateTank();
+            TankFactory m1Abrams = new AmericanTankFactory();
+            m1Abrams.CreateTank();
+            
             Console.WriteLine(tiger);
+            Console.WriteLine(t34);
+            Console.WriteLine(m1Abrams);
         }
     }
 }
