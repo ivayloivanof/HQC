@@ -51,7 +51,6 @@
             this.addresses.Enqueue("http://stackoverflow.com/");
             this.addresses.Enqueue("https://www.youtube.com/");
             this.addresses.Enqueue("https://www.google.bg/");
-            this.addresses.Enqueue("http://www.abv.bg/");
         }
     }
 }
