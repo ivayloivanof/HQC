@@ -17,8 +17,7 @@
 
         public override string ToString()
         {
-            return string.Format("-Tank\n...Model: {0}\n...Speed: {1:F2}\n...Damage: {2}",
-                this.Model, this.Speed, this.AttackDamage);
+            return string.Format("-Tank\n...Model: {0}\n...Speed: {1:F2}\n...Damage: {2}", this.Model, this.Speed, this.AttackDamage);
         }
     }
 }

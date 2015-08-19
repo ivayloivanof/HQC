@@ -4,9 +4,9 @@
 
     using Units;
 
-    class Program
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             var tiger = new Tank("Tiger", 4.5, 120);
             var t34 = new Tank("T 34", 3.3, 75);
