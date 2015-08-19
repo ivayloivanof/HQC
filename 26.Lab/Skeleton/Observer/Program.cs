@@ -2,11 +2,11 @@
 {
     using System.Collections.Generic;
 
-    using Skyrim.Units;
+    using Units;
 
-    class Program
+    public class Program
     {
-        static void Main()
+        public static void Main()
         {
             // Dragon with 100 HP
             var dragon = new Dragon("Alduin", 300, 100);

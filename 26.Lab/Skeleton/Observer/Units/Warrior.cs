@@ -2,9 +2,11 @@
 {
     using System.Collections.Generic;
 
-    using Skyrim.Items;
+    using Interface;
 
-    public class Warrior : Unit
+    using Items;
+
+    public class Warrior : Unit, IDragonDeathObserver
     {
         public Warrior(string name, int attackPoints, int healthPoints) 
             : base(name, attackPoints, healthPoints)
@@ -12,6 +14,11 @@
             this.Inventory = new List<Weapon>();
         }
 
-        public IList<Weapon> Inventory { get; private set; } 
+        public IList<Weapon> Inventory { get; private set; }
+
+        public void Update(Weapon weapon)
+        {
+            // TODO
+        }
     }
 }

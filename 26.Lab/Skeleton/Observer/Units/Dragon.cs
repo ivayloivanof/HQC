@@ -6,5 +6,7 @@
             : base(name, attackPoints, healthPoints)
         {
         }
+
+        public delegate void Notify();
     }
 }

@@ -7,8 +7,8 @@
     <ProjectGuid>{35FF1E7D-4865-4AD3-A9C2-B08C36092CC4}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Observer</RootNamespace>
-    <AssemblyName>Observer</AssemblyName>
+    <RootNamespace>Skyrim</RootNamespace>
+    <AssemblyName>Skyrim</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Interface\IDragonDeathObserver.cs" />
     <Compile Include="Items\Weapon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

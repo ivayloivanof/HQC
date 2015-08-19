@@ -14,8 +14,7 @@
 
         public override string ToString()
         {
-            return string.Format("Weapon AP: {0}, HP: {1}",
-                this.AttackBonus, this.HealthBonus);
+            return string.Format("Weapon AP: {0}, HP: {1}", this.AttackBonus, this.HealthBonus);
         }
     }
 }
