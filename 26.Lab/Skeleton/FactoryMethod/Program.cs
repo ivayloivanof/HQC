@@ -1,8 +1,8 @@
-﻿namespace TankManufacturer
+﻿namespace TankFactory
 {
     using System;
 
-    using TankManufacturer.Units;
+    using Units;
 
     class Program
     {

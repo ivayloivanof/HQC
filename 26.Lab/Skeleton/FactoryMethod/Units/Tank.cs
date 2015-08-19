@@ -1,4 +1,4 @@
-﻿namespace TankManufacturer.Units
+﻿namespace TankFactory.Units
 {
     public class Tank
     {
