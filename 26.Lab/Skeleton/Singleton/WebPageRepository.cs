@@ -4,12 +4,27 @@
 
     public class WebPageRepository
     {
-        private Queue<string> addresses;
+        private static WebPageRepository instance = null;
 
-        public WebPageRepository()
+        private readonly Queue<string> addresses;
+
+        private WebPageRepository()
         {
             this.addresses = new Queue<string>();
             this.Seed();
+        }
+
+        public static WebPageRepository Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new WebPageRepository();
+                }
+
+                return instance;
+            }
         }
 
         public bool IsEmpty

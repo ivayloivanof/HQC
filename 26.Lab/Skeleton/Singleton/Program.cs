@@ -1,12 +1,12 @@
 ﻿namespace WebScraper
 {
     using System;
-
+    
     public class Program
     {
-        static void Main()
+        public static void Main()
         {
-            var repository = new WebPageRepository();
+            var repository = WebPageRepository.Instance;
 
             var downloader = new Downloader();
             while (!repository.IsEmpty)

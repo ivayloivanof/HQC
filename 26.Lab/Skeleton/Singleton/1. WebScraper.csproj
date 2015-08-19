@@ -7,8 +7,8 @@
     <ProjectGuid>{6251ECF6-A14C-4A23-9397-FECEA6ACD59E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Singleton</RootNamespace>
-    <AssemblyName>Singleton</AssemblyName>
+    <RootNamespace>WebScraper</RootNamespace>
+    <AssemblyName>WebScraper</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
